@@ -19,7 +19,7 @@ import org.json.JSONObject;
 public class WeatherActivity extends AppCompatActivity {
     private TextView weatherTextView;
     private FusedLocationProviderClient fusedLocationProviderClient;
-    private static final String API_KEY = "YOUR_API_KEY";
+    private static final String API_KEY = "086e611b0cfc168128c076a0a79fae90";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
