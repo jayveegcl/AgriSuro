@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "609197603846",
+    "project_id": "agrisuro-f1472",
+    "storage_bucket": "agrisuro-f1472.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:609197603846:android:b20be2ceac109b7ba21787",
+        "android_client_info": {
+          "package_name": "app.thesis.agrisuro"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCGu8yDJn8RQw7TGho0wuUzsMWOLNi9Xaw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
