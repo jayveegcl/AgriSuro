@@ -9,4 +9,41 @@
     <string name="logout">Logout</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- Intro Screen -->
+    <string name="app_logo_description">AgriSuro Logo</string>
+    <string name="app_tagline">Smart Farming Assistant</string>
+    <string name="intro_description">A data-driven tool that empowers farmers with weather forecasts, resource information, pest identification, and expense tracking for improved agricultural productivity and financial management.</string>
+    <string name="get_started">Get Started</string>
+    <string name="signup">Sign Up</string>
+
+    <!-- Navigation -->
+    <string name="home">Home</string>
+    <string name="weather">Weather</string>
+    <string name="resources">Resources</string>
+    <string name="expenses">Expenses</string>
+
+    <!-- Home Screen -->
+    <string name="welcome_to_agrisuro">Welcome to AgriSuro</string>
+    <string name="welcome_description">Your smart farming assistant with data-driven tools for improved agricultural productivity and financial management.</string>
+    <string name="weather_forecast">Weather Forecast</string>
+    <string name="resource_center">Resource Center</string>
+    <string name="expense_tracker">Expense Tracker</string>
+    <string name="weather_planting_recommendations">Weather &amp; Planting Recommendations</string>
+    <string name="pesticide_fertilizer">Pesticide &amp; Fertilizer</string>
+
+    <!-- Weather Widget -->
+    <string name="current_weather">Current Weather</string>
+    <string name="planting_guide">Planting Guide</string>
+    <string name="five_day_forecast">5-Day Forecast</string>
+    <string name="planting_recommendations">Planting Recommendations</string>
+    <string name="recommendations_disclaimer">Recommendations based on current weather patterns and seasonal data.</string>
+    <string name="default_location">Banaue, Ifugao</string>
+    <string name="refresh">Refresh</string>
+
+    <!-- Ratings -->
+    <string name="excellent">Excellent</string>
+    <string name="good">Good</string>
+    <string name="poor">Poor</string>
+
 </resources>

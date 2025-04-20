@@ -9,7 +9,9 @@ import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import app.thesis.agrisuro.fragments.ExpenseTrackerFragment;
 import app.thesis.agrisuro.fragments.HomeFragment;
+import app.thesis.agrisuro.fragments.ResourceCenterFragment;
 import app.thesis.agrisuro.fragments.WeatherFragment;
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {

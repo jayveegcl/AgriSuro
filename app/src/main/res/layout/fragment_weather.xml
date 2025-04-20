@@ -60,6 +60,8 @@
         </LinearLayout>
 
         <!-- Tabs -->
+
+        <!-- Current Weather View -->
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/weather_tabs"
             android:layout_width="match_parent"
@@ -78,7 +80,6 @@
                 android:text="@string/planting_guide" />
         </com.google.android.material.tabs.TabLayout>
 
-        <!-- Current Weather View -->
         <LinearLayout
             android:id="@+id/current_weather_view"
             android:layout_width="match_parent"

@@ -25,6 +25,10 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import app.thesis.agrisuro.fragments.ExpenseTrackerFragment;
+import app.thesis.agrisuro.fragments.PesticideFertilizerFragment;
+import app.thesis.agrisuro.fragments.ResourceCenterFragment;
+
 public class Register extends AppCompatActivity {
 
     TextInputEditText editTextEmail, editTextPassword;
