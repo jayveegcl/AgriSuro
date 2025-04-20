@@ -1,4 +1,4 @@
-package com.agrisuro.app;
+package  app.thesis.agrisuro;
 
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -8,6 +8,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import app.thesis.agrisuro.fragments.HomeFragment;
+import app.thesis.agrisuro.fragments.WeatherFragment;
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 

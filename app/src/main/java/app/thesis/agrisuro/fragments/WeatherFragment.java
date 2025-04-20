@@ -1,4 +1,4 @@
-package com.agrisuro.app;
+package app.thesis.agrisuro.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -16,12 +16,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.agrisuro.app.adapters.ForecastAdapter;
 import com.agrisuro.app.adapters.PlantingRecommendationAdapter;
-import com.agrisuro.app.models.ForecastDay;
-import com.agrisuro.app.models.PlantingRecommendation;
+import app.thesis.agrisuro.models.ForecastDay;
+import app.thesis.agrisuro.models.PlantingRecommendation;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import app.thesis.agrisuro.R;
 
 public class WeatherFragment extends Fragment {
 
