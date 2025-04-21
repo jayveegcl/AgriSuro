@@ -31,6 +31,8 @@ import app.thesis.agrisuro.adapter.ForecastAdapter;
 import app.thesis.agrisuro.adapter.PlantingRecommendationAdapter;
 import app.thesis.agrisuro.models.ForecastDay;
 import app.thesis.agrisuro.models.PlantingRecommendation;
+import app.thesis.agrisuro.models.WeatherData;
+import app.thesis.agrisuro.utils.WeatherAPI;
 import app.thesis.agrisuro.utils.WeatherUtils;
 import com.google.android.material.tabs.TabLayout;
 
@@ -78,10 +80,16 @@ public class WeatherFragment extends Fragment implements LocationListener {
     private static final float MIN_DISTANCE_CHANGE = 1000; // 1 kilometer
     private boolean isLocationRequested = false;
 
+    // Weather API instance
+    private WeatherAPI weatherAPI;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_weather, container, false);
+
+        // Initialize Weather API
+        weatherAPI = new WeatherAPI();
 
         // Initialize UI components for the fragment
         tabLayout = view.findViewById(R.id.weather_tabs);
@@ -111,13 +119,23 @@ public class WeatherFragment extends Fragment implements LocationListener {
 
         // Set up refresh button
         refreshButton.setOnClickListener(v -> {
-            // Simulate refresh
+            if (getContext() == null) return;
+
+            // Disable button during refresh
             refreshButton.setEnabled(false);
-            // In a real app, this would call a weather API
-            new android.os.Handler().postDelayed(() -> {
-                refreshButton.setEnabled(true);
-                Toast.makeText(getContext(), "Weather data refreshed", Toast.LENGTH_SHORT).show();
-            }, 1000);
+
+            // Show loading indicator
+            if (progressBar != null) {
+                progressBar.setVisibility(View.VISIBLE);
+            }
+
+            // Get last known location or use default coordinates
+            Location lastLocation = getLastKnownLocation();
+            double latitude = lastLocation != null ? lastLocation.getLatitude() : 14.5995; // Default to Manila
+            double longitude = lastLocation != null ? lastLocation.getLongitude() : 120.9842;
+
+            // Fetch weather data using the API
+            fetchWeatherData(latitude, longitude);
         });
 
         // Set up tabs
@@ -193,13 +211,24 @@ public class WeatherFragment extends Fragment implements LocationListener {
                     tvRainfall.setText(rainText.getText().toString().replace("Rain: ", ""));
                     tvWind.setText(windText.getText().toString().replace("Wind: ", ""));
 
-                    // Update forecast recycler view
-                    ForecastAdapter forecastAdapter = new ForecastAdapter(getMockForecastData());
-                    rvForecast.setAdapter(forecastAdapter);
+                    // Get the adapters from the main recycler views to reuse the same data
+                    if (forecastRecyclerView.getAdapter() != null && forecastRecyclerView.getAdapter() instanceof ForecastAdapter) {
+                        rvForecast.setAdapter(forecastRecyclerView.getAdapter());
+                    } else {
+                        // Fallback to mock data if adapter is not available
+                        ForecastAdapter forecastAdapter = new ForecastAdapter(getMockForecastData());
+                        rvForecast.setAdapter(forecastAdapter);
+                    }
 
-                    // Update planting recommendations recycler view
-                    PlantingRecommendationAdapter recommendationAdapter = new PlantingRecommendationAdapter(getMockRecommendationData());
-                    rvPlantingRecommendations.setAdapter(recommendationAdapter);
+                    if (recommendationsRecyclerView.getAdapter() != null &&
+                            recommendationsRecyclerView.getAdapter() instanceof PlantingRecommendationAdapter) {
+                        rvPlantingRecommendations.setAdapter(recommendationsRecyclerView.getAdapter());
+                    } else {
+                        // Fallback to mock data if adapter is not available
+                        PlantingRecommendationAdapter recommendationAdapter =
+                                new PlantingRecommendationAdapter(getMockRecommendationData());
+                        rvPlantingRecommendations.setAdapter(recommendationAdapter);
+                    }
                 }
 
             }
@@ -344,29 +373,127 @@ public class WeatherFragment extends Fragment implements LocationListener {
 
         // In a real app, you would use reverse geocoding to get the city name
         // For this example, we'll just show the coordinates
-        String locationString = String.format("%.4f, %.4f", location.getLatitude(), location.getLongitude());
+        String locationString = String.format(Locale.getDefault(), "%.4f, %.4f", location.getLatitude(), location.getLongitude());
         locationText.setText(locationString);
 
-        // In a real app, you would call a weather API with these coordinates
-        // For this example, we'll just update with mock data
+        // Call the weather API with these coordinates
         updateWeatherData(location);
     }
 
     private void updateWeatherData(Location location) {
-        // In a real app, this would call a weather API
-        // For this example, we'll just update with slightly different mock data
+        if (location == null || getContext() == null) return;
 
-        // Simulate different weather based on location
-        double latitude = location.getLatitude();
-        int tempOffset = (int) (latitude % 5);
+        // Show loading indicator
+        if (progressBar != null) {
+            progressBar.setVisibility(View.VISIBLE);
+        }
 
-        currentTempText.setText((28 + tempOffset) + "°C");
-        conditionText.setText(tempOffset > 2 ? "Sunny" : "Partly Cloudy");
-        humidityText.setText("Humidity: " + (75 - tempOffset * 2) + "%");
-        windText.setText("Wind: " + (8 + tempOffset) + " km/h");
-        rainText.setText("Rain: " + (30 - tempOffset * 5) + "%");
+        // Fetch weather data using the API
+        fetchWeatherData(location.getLatitude(), location.getLongitude());
+    }
 
-        // Update forecast and recommendations
+    /**
+     * Fetch weather data using the WeatherAPI
+     */
+    private void fetchWeatherData(double latitude, double longitude) {
+        if (getContext() == null) return;
+
+        weatherAPI.fetchWeatherData(latitude, longitude, new WeatherAPI.WeatherCallback() {
+            @Override
+            public void onWeatherDataReceived(WeatherData weatherData) {
+                if (getContext() == null) return; // Fragment might be detached
+
+                // Update UI with received weather data
+                updateUIWithWeatherData(weatherData);
+
+                // Hide loading indicator
+                if (progressBar != null) {
+                    progressBar.setVisibility(View.GONE);
+                }
+
+                // Re-enable refresh button
+                if (refreshButton != null) {
+                    refreshButton.setEnabled(true);
+                }
+
+                Toast.makeText(getContext(), "Weather updated for current location", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onError(String errorMessage) {
+                if (getContext() == null) return; // Fragment might be detached
+
+                // Hide loading indicator
+                if (progressBar != null) {
+                    progressBar.setVisibility(View.GONE);
+                }
+
+                // Re-enable refresh button
+                if (refreshButton != null) {
+                    refreshButton.setEnabled(true);
+                }
+
+                // Show error message
+                Toast.makeText(getContext(), "Error: " + errorMessage, Toast.LENGTH_SHORT).show();
+
+                // Fall back to mock data
+                updateUIWithMockData();
+            }
+        });
+    }
+
+    /**
+     * Update UI with received weather data
+     */
+    private void updateUIWithWeatherData(WeatherData weatherData) {
+        if (weatherData == null || getContext() == null) return;
+
+        // Update location
+        String location = weatherData.getLocation();
+        if (location != null && !location.isEmpty()) {
+            locationText.setText(location);
+        }
+
+        // Update temperature and condition
+        currentTempText.setText(String.format(Locale.getDefault(), "%.1f°C", weatherData.getTemperature()));
+        conditionText.setText(weatherData.getWeatherCondition());
+
+        // Update weather details
+        humidityText.setText(String.format(Locale.getDefault(), "Humidity: %d%%", weatherData.getHumidity()));
+        windText.setText(String.format(Locale.getDefault(), "Wind: %.1f km/h", weatherData.getWindSpeed()));
+        rainText.setText(String.format(Locale.getDefault(), "Rain: %.1f mm", weatherData.getRainfall()));
+
+        // Update forecast recycler view
+        List<ForecastDay> forecastList = weatherData.getForecast();
+        if (forecastList != null && !forecastList.isEmpty()) {
+            ForecastAdapter forecastAdapter = new ForecastAdapter(forecastList);
+            forecastRecyclerView.setAdapter(forecastAdapter);
+        }
+
+        // Update planting recommendations
+        List<PlantingRecommendation> recommendations = weatherData.getPlantingRecommendations();
+        if (recommendations != null && !recommendations.isEmpty()) {
+            PlantingRecommendationAdapter recommendationAdapter = new PlantingRecommendationAdapter(recommendations);
+            recommendationsRecyclerView.setAdapter(recommendationAdapter);
+        }
+
+        // Update the weather widget UI if it's initialized
+        updateWeatherWidgetUI();
+    }
+
+    /**
+     * Update UI with mock data as fallback
+     */
+    private void updateUIWithMockData() {
+        // Use mock data for UI updates
+        locationText.setText("Banaue, Ifugao");
+        currentTempText.setText("28°C");
+        conditionText.setText("Partly Cloudy");
+        humidityText.setText("Humidity: 75%");
+        windText.setText("Wind: 8 km/h");
+        rainText.setText("Rain: 30%");
+
+        // Update forecast and recommendations with mock data
         ForecastAdapter forecastAdapter = new ForecastAdapter(getMockForecastData());
         forecastRecyclerView.setAdapter(forecastAdapter);
 
@@ -374,10 +501,8 @@ public class WeatherFragment extends Fragment implements LocationListener {
                 new PlantingRecommendationAdapter(getMockRecommendationData());
         recommendationsRecyclerView.setAdapter(recommendationAdapter);
 
-        // Update the weather widget UI if it's initialized
+        // Update the weather widget UI
         updateWeatherWidgetUI();
-
-        Toast.makeText(getContext(), "Weather updated for current location", Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -396,6 +521,32 @@ public class WeatherFragment extends Fragment implements LocationListener {
         if (getContext() != null) {
             Toast.makeText(getContext(), "Location provider disabled", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    /**
+     * Get the last known location from the device
+     */
+    @SuppressLint("MissingPermission")
+    private Location getLastKnownLocation() {
+        if (getContext() == null) return null;
+
+        // Check if we have permission
+        if (ContextCompat.checkSelfPermission(getContext(),
+                Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            return null;
+        }
+
+        LocationManager locManager = (LocationManager) getContext().getSystemService(Context.LOCATION_SERVICE);
+        if (locManager == null) return null;
+
+        // Try to get last known location from GPS first
+        Location lastKnownLocation = locManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+        if (lastKnownLocation == null) {
+            // If GPS location is not available, try network provider
+            lastKnownLocation = locManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+        }
+
+        return lastKnownLocation;
     }
 
     @Override
