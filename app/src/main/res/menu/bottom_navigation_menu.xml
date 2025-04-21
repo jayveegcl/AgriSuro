@@ -6,15 +6,14 @@
             android:title="@string/home" />
         <item
             android:id="@+id/nav_weather"
-            android:icon="@drawable/ic_cloud"
+            android:icon="@drawable/ic_weather"
             android:title="@string/weather" />
         <item
             android:id="@+id/nav_resources"
-            android:icon="@drawable/ic_leaf"
+            android:icon="@drawable/ic_resource"
             android:title="@string/resources" />
         <item
             android:id="@+id/nav_expenses"
-            android:icon="@drawable/ic_chart"
+            android:icon="@drawable/ic_expense"
             android:title="@string/expenses" />
     </menu>
-</menu>
