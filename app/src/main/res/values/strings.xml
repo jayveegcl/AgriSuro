@@ -10,6 +10,13 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <!-- Navigation Labels -->
+    <string name="nav_home">Home</string>
+    <string name="nav_weather">Weather</string>
+    <string name="nav_resources">Resources</string>
+    <string name="nav_pesticide">Pesticides</string>
+    <string name="nav_expense">Expenses</string>
+
     <!-- Intro Screen -->
     <string name="app_logo_description">AgriSuro Logo</string>
     <string name="app_tagline">Smart Farming Assistant</string>
@@ -40,10 +47,35 @@
     <string name="recommendations_disclaimer">Recommendations based on current weather patterns and seasonal data.</string>
     <string name="default_location">Banaue, Ifugao</string>
     <string name="refresh">Refresh</string>
+    <string name="weather_icon">Weather Icon</string>
+    <string name="humidity">Humidity</string>
+    <string name="rainfall">Rainfall</string>
+    <string name="wind">Wind</string>
+    <string name="forecast">Forecast</string>
+    <string name="view_all_weather_data">View All Weather Data</string>
+    <string name="use_current_location">Use Current Location</string>
+    <string name="location_permission_required">Location permission is required to get weather for your current location</string>
+    <string name="location_permission_denied">Location permission denied. Weather will use default location.</string>
+    <string name="fetching_location">Fetching your location...</string>
+    <string name="location_error">Could not determine location. Using default.</string>
 
     <!-- Ratings -->
     <string name="excellent">Excellent</string>
     <string name="good">Good</string>
     <string name="poor">Poor</string>
 
+    <string name="rice">Rice</string>
+    <string name="disease">Disease</string>
+    <string name="weed">Weed</string>
+    <string name="resource_type">Resource Type</string>
+    <string name="resource_title_placeholder">Resource Title</string>
+    <string name="resource_description_placeholder">Resource description goes here</string>
+    <string name="key_characteristics">Key Characteristics</string>
+
+    <!-- General -->
+    <string name="search">Search</string>
+    <string name="filter">Filter</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="share">Share</string>
 </resources>

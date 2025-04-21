@@ -30,7 +30,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="top|end"
                 android:layout_margin="8dp"
-                android:background="@drawable/badge_default"
+                android:background="@drawable/badge_background"
                 android:paddingHorizontal="8dp"
                 android:paddingVertical="4dp"
                 android:text="@string/rice"
@@ -61,8 +61,12 @@
                 android:textColor="@color/gray_700" />
 
             <TextView
+                android:id="@+id/key_characteristics"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="8dp"
-                android:text="@string/key_characteristics
+                android:text="@string/key_characteristics" />
+        </LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
