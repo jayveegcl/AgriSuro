@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+
+    <!-- Spray bottle body -->
+    <path
+        android:fillColor="@color/blue_500"
+        android:pathData="M10,8L16,8A2,2 0,0 1,18 10L18,20A2,2 0,0 1,16 22L10,22A2,2 0,0 1,8 20L8,10A2,2 0,0 1,10 8z" />
+
+    <!-- Spray bottle top -->
+    <path
+        android:fillColor="@color/blue_700"
+        android:pathData="M11,8L15,8L15,5L11,5z" />
+
+    <!-- Spray nozzle -->
+    <path
+        android:fillColor="@color/blue_800"
+        android:pathData="M10,5L16,5A1,1 0,0 1,17 6L17,6A1,1 0,0 1,16 7L10,7A1,1 0,0 1,9 6L9,6A1,1 0,0 1,10 5z" />
+
+    <!-- Spray particles -->
+    <path
+        android:strokeColor="@color/blue_300"
+        android:strokeWidth="1.5"
+        android:strokeLineCap="round"
+        android:pathData="M6,10L4,8M5,14L2,14M6,18L3,20" />
+</vector>

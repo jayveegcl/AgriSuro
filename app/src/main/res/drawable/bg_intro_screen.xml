@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Background gradient -->
+    <item>
+        <shape>
+            <gradient
+                android:angle="135"
+                android:endColor="@color/blue_100"
+                android:startColor="@color/green_100"
+                android:type="linear" />
+        </shape>
+    </item>
+
+    <!-- Pattern overlay -->
+    <item>
+        <bitmap
+            android:src="@drawable/pattern_dots"
+            android:tileMode="repeat"
+            android:alpha="0.1" />
+    </item>
+</layer-list>

@@ -3,7 +3,6 @@ package app.thesis.agrisuro;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
@@ -16,6 +15,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.fragment.app.Fragment;
+import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -23,6 +24,10 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
+import app.thesis.agrisuro.fragments.ExpenseTrackerFragment;
+import app.thesis.agrisuro.fragments.PesticideFertilizerFragment;
+import app.thesis.agrisuro.fragments.ResourceCenterFragment;
 
 public class Register extends AppCompatActivity {
 
@@ -106,5 +111,32 @@ public class Register extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+    }
+
+    public static class MainTabAdapter extends FragmentStateAdapter {
+
+        public MainTabAdapter(@NonNull Fragment fragment) {
+            super(fragment);
+        }
+
+        @NonNull
+        @Override
+        public Fragment createFragment(int position) {
+            switch (position) {
+                case 0:
+                    return new ResourceCenterFragment();
+                case 1:
+                    return new ExpenseTrackerFragment();
+                case 2:
+                    return new PesticideFertilizerFragment();
+                default:
+                    return new ResourceCenterFragment();
+            }
+        }
+
+        @Override
+        public int getItemCount() {
+            return 3; // Number of tabs
+        }
     }
 }

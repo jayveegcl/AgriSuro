@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Welcome Card -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="2dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/welcome_to_agrisuro"
+                    android:textColor="@color/green_50"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="16dp"
+                    android:text="@string/welcome_description"
+                    android:textColor="@color/gray_600" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:flexWrap="wrap">
+
+                    <Button
+                        android:id="@+id/weather_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:backgroundTint="@color/green_600"
+                        android:drawableStart="@drawable/ic_weather"
+                        android:drawablePadding="8dp"
+                        android:text="@string/weather_forecast" />
+
+                    <Button
+                        android:id="@+id/resource_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:backgroundTint="@color/white"
+                        android:drawableStart="@drawable/ic_leaf"
+                        android:drawablePadding="8dp"
+                        android:text="@string/resource_center"
+                        android:textColor="@color/green_700"
+                        app:strokeColor="@color/green_200"
+                        app:strokeWidth="1dp" />
+
+                    <Button
+                        android:id="@+id/expense_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:backgroundTint="@color/white"
+                        android:drawableStart="@drawable/ic_chart"
+                        android:drawablePadding="8dp"
+                        android:text="@string/expense_tracker"
+                        android:textColor="@color/green_700"
+                        app:strokeColor="@color/green_200"
+                        app:strokeWidth="1dp" />
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Weather Section -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:drawableStart="@drawable/ic_cloud"
+            android:drawablePadding="8dp"
+            android:text="@string/weather_planting_recommendations"
+            android:textColor="@color/green_800"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <include layout="@layout/weather_widget" />
+
+        <!-- Main Features Tabs -->
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tab_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:background="@color/green_100"
+            app:tabIndicatorColor="@color/green_600"
+            app:tabSelectedTextColor="@color/green_800"
+            app:tabTextColor="@color/green_700" />
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            android:background="@color/white" />
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

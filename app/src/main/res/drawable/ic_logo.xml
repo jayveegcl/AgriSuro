@@ -5,6 +5,21 @@
     android:viewportWidth="108"
     android:viewportHeight="108">
 
+    <!-- Background circle -->
+    <path
+        android:fillColor="@color/green_100"
+        android:pathData="M54,54m-48,0a48,48 0,1 1,96 0a48,48 0,1 1,-96 0" />
+
+    <!-- Sun -->
+    <path
+        android:fillColor="@color/yellow_500"
+        android:pathData="M54,30m-12,0a12,12 0,1 1,24 0a12,12 0,1 1,-24 0" />
+
+    <!-- Field/Ground -->
+    <path
+        android:fillColor="@color/green_700"
+        android:pathData="M18,78L90,78L90,84L18,84Z" />
+
     <!-- Plant stem -->
     <path
         android:fillColor="@color/green_600"
