@@ -25,6 +25,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import app.thesis.agrisuro.R;
+
 public class ExpenseTrackerFragment extends Fragment {
 
     private TabLayout tabLayout;
