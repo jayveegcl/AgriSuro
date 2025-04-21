@@ -55,7 +55,7 @@
                         android:layout_marginEnd="8dp"
                         android:layout_marginBottom="8dp"
                         android:backgroundTint="@color/green_600"
-                        android:drawableStart="@drawable/ic_cloud"
+                        android:drawableStart="@drawable/ic_weather"
                         android:drawablePadding="8dp"
                         android:text="@string/weather_forecast" />
 
