@@ -10,8 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.agrisuro.app.R;
-import com.agrisuro.app.models.ResourceItem;
+import app.thesis.agrisuro.R;
+import app.thesis.agrisuro.models.ResourceItem;
 import com.bumptech.glide.Glide;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;

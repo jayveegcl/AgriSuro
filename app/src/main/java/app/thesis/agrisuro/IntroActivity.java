@@ -29,7 +29,7 @@ public class IntroActivity extends AppCompatActivity {
                 // Navigate to login/signup activity
                 // For now, we'll navigate to MainActivity
                 // In a real app, you would navigate to a LoginActivity
-                Intent intent = new Intent(IntroActivity.this, MainActivity.class);
+                Intent intent = new Intent(IntroActivity.this, Login.class);
                 startActivity(intent);
                 finish();
             }
