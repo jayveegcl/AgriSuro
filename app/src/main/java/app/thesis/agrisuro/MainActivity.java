@@ -11,6 +11,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import app.thesis.agrisuro.fragments.ExpenseTrackerFragment;
 import app.thesis.agrisuro.fragments.HomeFragment;
+import app.thesis.agrisuro.fragments.ProfileFragment;
 import app.thesis.agrisuro.fragments.ResourceCenterFragment;
 import app.thesis.agrisuro.fragments.WeatherFragment;
 
@@ -46,6 +47,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             selectedFragment = new ResourceCenterFragment();
         } else if (itemId == R.id.nav_expenses) {
             selectedFragment = new ExpenseTrackerFragment();
+        } else if (itemId == R.id.nav_profile) {
+            selectedFragment = new ProfileFragment();
         }
 
         if (selectedFragment != null) {
