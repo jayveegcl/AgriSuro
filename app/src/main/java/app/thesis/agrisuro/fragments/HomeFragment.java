@@ -15,6 +15,7 @@ import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
 import app.thesis.agrisuro.R;
+import app.thesis.agrisuro.adapter.MainTabAdapter;
 
 public class HomeFragment extends Fragment {
 
