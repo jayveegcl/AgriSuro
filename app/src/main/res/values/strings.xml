@@ -16,6 +16,7 @@
     <string name="nav_resources">Resources</string>
     <string name="nav_pesticide">Pesticides</string>
     <string name="nav_expense">Expenses</string>
+    <string name="nav_profile">Profile</string>
 
     <!-- Intro Screen -->
     <string name="app_logo_description">AgriSuro Logo</string>

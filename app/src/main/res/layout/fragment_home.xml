@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_background">
+    android:background="@drawable/bg_card">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
-            app:cardBackgroundColor="@color/white"
+            app:cardBackgroundColor="@color/green_400"
             app:cardCornerRadius="8dp"
             app:cardElevation="2dp">
 
@@ -31,7 +31,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/welcome_to_agrisuro"
                     android:textColor="@color/black"
-                    android:textSize="22sp"
+                    android:textSize="25sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -40,56 +40,8 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="16dp"
                     android:text="@string/welcome_description"
-                    android:textColor="@color/gray_600" />
+                    android:textColor="@color/black" />
 
-                <LinearLayout
-                    style="?android:attr/buttonBarStyle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:flexWrap="wrap">
-
-                    <Button
-                        android:id="@+id/weather_button"
-                        style="?android:attr/buttonBarButtonStyle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginBottom="8dp"
-                        android:backgroundTint="@color/green_600"
-                        android:drawableStart="@drawable/ic_weather"
-                        android:drawablePadding="8dp"
-                        android:text="@string/weather_forecast" />
-
-                    <Button
-                        android:id="@+id/resource_button"
-                        style="?android:attr/buttonBarButtonStyle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginBottom="8dp"
-                        android:backgroundTint="@color/white"
-                        android:drawableStart="@drawable/ic_plant"
-                        android:drawablePadding="8dp"
-                        android:text="@string/resource_center"
-                        android:textColor="@color/green_700"
-                        app:strokeColor="@color/green_200"
-                        app:strokeWidth="1dp" />
-
-                    <Button
-                        android:id="@+id/expense_button"
-                        style="?android:attr/buttonBarButtonStyle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
-                        android:backgroundTint="@color/white"
-                        android:drawableStart="@drawable/ic_expense"
-                        android:drawablePadding="8dp"
-                        android:text="@string/expense_tracker"
-                        android:textColor="@color/green_700"
-                        app:strokeColor="@color/green_200"
-                        app:strokeWidth="1dp" />
-                </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
