@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:text="Today"
         android:textSize="12sp"
-        android:textStyle="medium" />
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/high_temp_text"

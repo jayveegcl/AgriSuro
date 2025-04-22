@@ -162,7 +162,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="8dp"
                 android:text="@string/five_day_forecast"
-                android:textStyle="medium" />
+                android:textStyle="bold" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/forecast_recycler_view"
@@ -187,7 +187,7 @@
                 android:drawablePadding="8dp"
                 android:text="@string/planting_recommendations"
                 android:textSize="16sp"
-                android:textStyle="medium" />
+                android:textStyle="bold" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recommendations_recycler_view"

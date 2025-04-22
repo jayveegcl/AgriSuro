@@ -26,7 +26,7 @@
                 android:layout_weight="1"
                 android:text="Rice (Lowland)"
                 android:textColor="@color/green_700"
-                android:textStyle="medium" />
+                android:textStyle="bold" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/suitability_chip"
