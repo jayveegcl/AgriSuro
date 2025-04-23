@@ -29,14 +29,14 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
 
         // Set up floating action button for resources
-        findViewById(R.id.fab_resources).setOnClickListener(view -> {
+        {
             // Navigate to Resource Center
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.fragment_container, new ResourceCenterFragment())
                     .commit();
             // Update selected item in bottom navigation
             bottomNavigationView.setSelectedItemId(R.id.nav_resources);
-        });
+        };
 
 
         // Set default fragment
