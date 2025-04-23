@@ -5,20 +5,29 @@
     android:id="@+id/main"
     android:orientation="vertical"
     android:gravity="center"
+    android:padding="24dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="#FFFFFF">
 
     <TextView
         android:id="@+id/user_details"
-        android:text="Hello, world!"
+        android:text="Welcome, User!"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="#333333"
+        android:layout_marginBottom="24dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
     <Button
         android:id="@+id/logout"
         android:text="@string/logout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:textAllCaps="false"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        android:layout_marginTop="16dp" />
 
 </LinearLayout>

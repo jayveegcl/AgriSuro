@@ -29,7 +29,7 @@ public class SplashActivity extends AppCompatActivity {
                     startActivity(intent);
                 } else {
                     // Not first time - go directly to main
-                    Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+                    Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
                     startActivity(intent);
                 }
 

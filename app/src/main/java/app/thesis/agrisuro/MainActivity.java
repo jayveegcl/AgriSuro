@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                     .replace(R.id.fragment_container, new ResourceCenterFragment())
                     .commit();
             // Update selected item in bottom navigation
-            bottomNavigationView.setSelectedItemId(R.id.nav_resources);
+            bottomNavigationView.setSelectedItemId(R.id.nav_home);
         };
 
 

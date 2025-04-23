@@ -3,63 +3,65 @@ package app.thesis.agrisuro.adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import app.thesis.agrisuro.R;
-import app.thesis.agrisuro.models.ForecastDay;
-import app.thesis.agrisuro.utils.WeatherUtils;
+import app.thesis.agrisuro.models.ForecastItem;
 
 import java.util.List;
 
 public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.ForecastViewHolder> {
 
-    private final List<ForecastDay> forecastList;
+    private List<ForecastItem> forecastItems;
 
-    public ForecastAdapter(List<ForecastDay> forecastList) {
-        this.forecastList = forecastList;
+    public ForecastAdapter(List<ForecastItem> forecastItems) {
+        this.forecastItems = forecastItems;
     }
 
     @NonNull
     @Override
     public ForecastViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_forecast_day, parent, false);
+                .inflate(R.layout.item_forecast, parent, false);
         return new ForecastViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ForecastViewHolder holder, int position) {
-        ForecastDay forecastDay = forecastList.get(position);
-        holder.dayText.setText(forecastDay.getDay());
-        holder.highTempText.setText(String.format("%d°", forecastDay.getHighTemp()));
-        holder.lowTempText.setText(String.format("%d°", forecastDay.getLowTemp()));
-        holder.rainProbabilityText.setText(String.format("%d%%", forecastDay.getRainProbability()));
+        ForecastItem item = forecastItems.get(position);
 
-        // Set text color based on condition
-        int conditionColor = WeatherUtils.getConditionColor(holder.itemView.getContext(), forecastDay.getCondition());
-        holder.highTempText.setTextColor(conditionColor);
+        holder.dateText.setText(item.getDate());
+        holder.tempHighText.setText(item.getMaxTemp());
+        holder.tempLowText.setText(item.getMinTemp());
+        holder.descriptionText.setText(item.getDescription());
+
+        // Load weather icon
+        Glide.with(holder.itemView.getContext())
+                .load(item.getIconUrl())
+                .into(holder.iconView);
     }
 
     @Override
     public int getItemCount() {
-        return forecastList.size();
+        return forecastItems.size();
     }
 
     static class ForecastViewHolder extends RecyclerView.ViewHolder {
-        TextView dayText;
-        TextView highTempText;
-        TextView lowTempText;
-        TextView rainProbabilityText;
+        TextView dateText, tempHighText, tempLowText, descriptionText;
+        ImageView iconView;
 
         public ForecastViewHolder(@NonNull View itemView) {
             super(itemView);
-            dayText = itemView.findViewById(R.id.day_text);
-            highTempText = itemView.findViewById(R.id.high_temp_text);
-            lowTempText = itemView.findViewById(R.id.low_temp_text);
-            rainProbabilityText = itemView.findViewById(R.id.rain_probability_text);
+            dateText = itemView.findViewById(R.id.forecastDate);
+            tempHighText = itemView.findViewById(R.id.forecastTempHigh);
+            tempLowText = itemView.findViewById(R.id.forecastTempLow);
+            descriptionText = itemView.findViewById(R.id.forecastDescription);
+            iconView = itemView.findViewById(R.id.forecastIcon);
         }
     }
 }

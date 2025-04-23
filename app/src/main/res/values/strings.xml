@@ -4,8 +4,8 @@
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="register">Register</string>
-    <string name="click_to_login">Click to Login</string>
-    <string name="click_to_register">Click to Register</string>
+    <string name="click_to_login">Already have an account? Login now</string>
+    <string name="click_to_register">Don\'t have an account? Register now</string>
     <string name="logout">Logout</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
