@@ -96,9 +96,9 @@ public class WeatherFragment extends Fragment {
             if (addresses != null && !addresses.isEmpty()) {
                 String cityName = addresses.get(0).getLocality();
                 if (cityName != null) {
-                    locationText.setText("Location: " + cityName);
+                    locationText.setText(cityName);
                 } else {
-                    locationText.setText("Location: Unknown");
+                    locationText.setText("Unknown");
                 }
             }
         } catch (IOException e) {
