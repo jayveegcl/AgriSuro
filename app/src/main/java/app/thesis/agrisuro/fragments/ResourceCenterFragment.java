@@ -1,12 +1,16 @@
 package app.thesis.agrisuro.fragments;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
-import android.widget.TextView;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -14,6 +18,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import app.thesis.agrisuro.R;
 import app.thesis.agrisuro.adapter.ResourceItemAdapter;
 import app.thesis.agrisuro.models.ResourceItem;
 import com.google.android.material.tabs.TabLayout;
@@ -25,13 +30,12 @@ import java.util.stream.Collectors;
 public class ResourceCenterFragment extends Fragment implements ResourceItemAdapter.OnResourceItemClickListener {
 
     private TabLayout tabLayout;
-    private EditText searchInput;
-    private ImageButton filterButton;
-    private RecyclerView resourcesRecyclerView;
-    private TextView noResultsText;
-    private View detailContainer;
-    private View resourcesContainer;
-    private Button backButton;
+    private EditText etSearch;
+    private ImageButton btnFilter;
+    private RecyclerView recyclerResources;
+    private LinearLayout layoutEmptyState;
+    private FrameLayout containerDetail;
+    private Button btnBack;
 
     private List<ResourceItem> allResources;
     private List<ResourceItem> filteredResources;
@@ -43,17 +47,17 @@ public class ResourceCenterFragment extends Fragment implements ResourceItemAdap
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_resource_center, container, false);
+        View view;
+        view = inflater.inflate(R.layout.fragment_resource_center, container, false);
 
         // Initialize UI components
-        tabLayout = view.findViewById(R.id.resource_tabs);
-        searchInput = view.findViewById(R.id.search_input);
-        filterButton = view.findViewById(R.id.filter_button);
-        resourcesRecyclerView = view.findViewById(R.id.resources_recycler_view);
-        noResultsText = view.findViewById(R.id.no_results_text);
-        detailContainer = view.findViewById(R.id.detail_container);
-        resourcesContainer = view.findViewById(R.id.resources_container);
-        backButton = view.findViewById(R.id.back_button);
+        tabLayout = view.findViewById(R.id.tab_layout);
+        etSearch = view.findViewById(R.id.etSearch);
+        btnFilter = view.findViewById(R.id.btnFilter);
+        recyclerResources = view.findViewById(R.id.recyclerResources);
+        layoutEmptyState = view.findViewById(R.id.layoutEmptyState);
+        containerDetail = view.findViewById(R.id.containerDetail);
+        btnBack = view.findViewById(R.id.btnBack);
 
         // Initialize data
         allResources = getMockResources();
@@ -61,11 +65,11 @@ public class ResourceCenterFragment extends Fragment implements ResourceItemAdap
 
         // Set up RecyclerView
         adapter = new ResourceItemAdapter(getContext(), filteredResources, favorites, this);
-        resourcesRecyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
-        resourcesRecyclerView.setAdapter(adapter);
+        recyclerResources.setLayoutManager(new GridLayoutManager(getContext(), 2));
+        recyclerResources.setAdapter(adapter);
 
         // Set up search
-        searchInput.addTextChangedListener(new TextWatcher() {
+        etSearch.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
 
@@ -88,10 +92,19 @@ public class ResourceCenterFragment extends Fragment implements ResourceItemAdap
                         currentCategory = "rice-variants";
                         break;
                     case 1:
-                        currentCategory = "crop-diseases";
+                        currentCategory = "rice-diseases";
                         break;
                     case 2:
-                        currentCategory = "weed-management";
+                        currentCategory = "rice-weeds";
+                        break;
+                    case 3:
+                        currentCategory = "insects";
+                        break;
+                    case 4:
+                        currentCategory = "pesticide";
+                        break;
+                    case 5:
+                        currentCategory = "fertilizer";
                         break;
                 }
                 filterResources();
@@ -104,10 +117,18 @@ public class ResourceCenterFragment extends Fragment implements ResourceItemAdap
             public void onTabReselected(TabLayout.Tab tab) {}
         });
 
+        // Set up filter button
+        btnFilter.setOnClickListener(v -> {
+            // Implement filter functionality here
+            // For example, show a dialog with filter options
+        });
+
         // Set up back button
-        backButton.setOnClickListener(v -> {
-            detailContainer.setVisibility(View.GONE);
-            resourcesContainer.setVisibility(View.VISIBLE);
+        btnBack.setOnClickListener(v -> {
+            containerDetail.setVisibility(View.GONE);
+            btnBack.setVisibility(View.GONE);
+            recyclerResources.setVisibility(View.VISIBLE);
+            tabLayout.setVisibility(View.VISIBLE);
         });
 
         return view;
@@ -126,27 +147,34 @@ public class ResourceCenterFragment extends Fragment implements ResourceItemAdap
         adapter.notifyDataSetChanged();
 
         if (filteredResources.isEmpty()) {
-            noResultsText.setVisibility(View.VISIBLE);
+            layoutEmptyState.setVisibility(View.VISIBLE);
+            recyclerResources.setVisibility(View.GONE);
         } else {
-            noResultsText.setVisibility(View.GONE);
+            layoutEmptyState.setVisibility(View.GONE);
+            recyclerResources.setVisibility(View.VISIBLE);
         }
     }
 
     @Override
     public void onResourceItemClick(ResourceItem item) {
         // Show detail view
-        detailContainer.setVisibility(View.VISIBLE);
-        resourcesContainer.setVisibility(View.GONE);
+        containerDetail.setVisibility(View.VISIBLE);
+        btnBack.setVisibility(View.VISIBLE);
+        recyclerResources.setVisibility(View.GONE);
+        tabLayout.setVisibility(View.GONE);
 
         // Set detail data
-        DetailCardFragment detailFragment = (DetailCardFragment) getChildFragmentManager()
-                .findFragmentById(R.id.detail_fragment);
-        if (detailFragment != null) {
-            detailFragment.setResourceItem(item, favorites.contains(item.getId()));
-        }
+        DetailCardFragment detailFragment = new DetailCardFragment();
+        Bundle args = new Bundle();
+        args.putString("resourceId", item.getId());
+        args.putBoolean("isFavorite", favorites.contains(item.getId()));
+        detailFragment.setArguments(args);
+
+        getChildFragmentManager().beginTransaction()
+                .replace(R.id.containerDetail, detailFragment)
+                .commit();
     }
 
-    @Override
     public void onToggleFavorite(String id) {
         if (favorites.contains(id)) {
             favorites.remove(id);
@@ -156,11 +184,11 @@ public class ResourceCenterFragment extends Fragment implements ResourceItemAdap
         adapter.notifyDataSetChanged();
 
         // Update detail view if open
-        if (detailContainer.getVisibility() == View.VISIBLE) {
+        if (containerDetail.getVisibility() == View.VISIBLE) {
             DetailCardFragment detailFragment = (DetailCardFragment) getChildFragmentManager()
-                    .findFragmentById(R.id.detail_fragment);
+                    .findFragmentById(R.id.containerDetail);
             if (detailFragment != null) {
-                detailFragment.updateFavoriteStatus(favorites.contains(detailFragment.getCurrentItemId()));
+                detailFragment.updateFavoriteStatus(favorites.contains(id));
             }
         }
     }
@@ -171,86 +199,64 @@ public class ResourceCenterFragment extends Fragment implements ResourceItemAdap
 
         // Rice variants
         resources.add(new ResourceItem(
-                "1",
-                "NSIC Rc 222",
-                "High-yielding rice variety suitable for irrigated lowlands with resistance to blast and bacterial leaf blight.",
-                "https://images.unsplash.com/photo-1536054695850-0c8f91f68a56?w=800&q=80",
-                "rice-variants",
-                new String[]{"High-yield", "Disease-resistant", "Irrigated", "120-days"}
+
         ));
 
         resources.add(new ResourceItem(
-                "2",
-                "NSIC Rc 160",
-                "Drought-tolerant rice variety ideal for rainfed areas with moderate resistance to common pests.",
-                "https://images.unsplash.com/photo-1626016750647-215e49b44fc7?w=800&q=80",
-                "rice-variants",
-                new String[]{"Drought-tolerant", "Rainfed", "110-days"}
+
         ));
 
         resources.add(new ResourceItem(
-                "3",
-                "NSIC Rc 216",
-                "Salt-tolerant rice variety suitable for coastal areas with good grain quality.",
-                "https://images.unsplash.com/photo-1559684459-af4974cc2145?w=800&q=80",
-                "rice-variants",
-                new String[]{"Salt-tolerant", "Coastal", "115-days"}
+
         ));
 
-        // Crop diseases
+        // Rice diseases
         resources.add(new ResourceItem(
-                "4",
-                "Bacterial Leaf Blight",
-                "A serious bacterial disease causing wilting of seedlings and yellowing and drying of leaves.",
-                "https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?w=800&q=80",
-                "crop-diseases",
-                new String[]{"Bacterial", "Leaves", "Wilting", "Yellowing"}
+
         ));
 
         resources.add(new ResourceItem(
-                "5",
-                "Rice Blast",
-                "Fungal disease causing lesions on leaves, stems, and grains, potentially leading to significant yield loss.",
-                "https://images.unsplash.com/photo-1574323347407-f5e1c5a1ec21?w=800&q=80",
-                "crop-diseases",
-                new String[]{"Fungal", "Lesions", "Yield-loss"}
+
         ));
 
         resources.add(new ResourceItem(
-                "6",
-                "Sheath Blight",
-                "Fungal disease affecting the sheath of rice plants, causing irregular lesions and potential lodging.",
-                "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800&q=80",
-                "crop-diseases",
-                new String[]{"Fungal", "Sheath", "Lesions", "Lodging"}
+
         ));
 
-        // Weed management
+        // Rice weeds
         resources.add(new ResourceItem(
-                "7",
-                "Barnyard Grass Control",
-                "Methods to manage barnyard grass, a common weed in rice fields that competes for nutrients.",
-                "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800&q=80",
-                "weed-management",
-                new String[]{"Grassy", "Competitive", "Pre-emergence"}
+
         ));
 
         resources.add(new ResourceItem(
-                "8",
-                "Water Hyacinth Management",
-                "Techniques to control water hyacinth, an invasive aquatic weed affecting irrigation channels.",
-                "https://images.unsplash.com/photo-1621928372414-30e144d51d49?w=800&q=80",
-                "weed-management",
-                new String[]{"Aquatic", "Invasive", "Irrigation"}
+
+        ));
+
+        // Insects
+        resources.add(new ResourceItem(
+
         ));
 
         resources.add(new ResourceItem(
-                "9",
-                "Integrated Weed Management",
-                "Comprehensive approach combining multiple methods for effective and sustainable weed control.",
-                "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800&q=80",
-                "weed-management",
-                new String[]{"Integrated", "Sustainable", "Multiple-methods"}
+
+        ));
+
+        // Pesticides
+        resources.add(new ResourceItem(
+
+        ));
+
+        resources.add(new ResourceItem(
+
+        ));
+
+        // Fertilizers
+        resources.add(new ResourceItem(
+
+        ));
+
+        resources.add(new ResourceItem(
+
         ));
 
         return resources;

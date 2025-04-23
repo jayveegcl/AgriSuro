@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_background"
+    android:background="@drawable/bg_card_accent"
     tools:context=".Login">
 
     <LinearLayout
@@ -16,8 +16,8 @@
         android:padding="24dp">
 
         <ImageView
-            android:layout_width="130dp"
-            android:layout_height="130dp"
+            android:layout_width="156dp"
+            android:layout_height="143dp"
             android:layout_marginBottom="32dp"
             android:contentDescription="@string/app_name"
             android:src="@drawable/icon" />
@@ -42,8 +42,9 @@
                     android:layout_marginBottom="24dp"
                     android:gravity="center"
                     android:text="@string/login"
+                    android:fontFamily="@font/nunito_sans_bold"
                     android:textColor="@color/green_600"
-                    android:textSize="28sp"
+                    android:textSize="35sp"
                     android:textStyle="bold" />
 
                 <com.google.android.material.textfield.TextInputLayout
