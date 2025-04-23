@@ -1,7 +1,7 @@
 package app.thesis.agrisuro.adapter;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment
+import androidx.fragment.app.Fragment;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import app.thesis.agrisuro.fragments.ResourceCenterFragment;
