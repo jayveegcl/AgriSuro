@@ -18,8 +18,8 @@
         <shape>
             <gradient
                 android:angle="135"
-                android:endColor="@color/white"
-                android:startColor="#F8FBFA"
+                android:endColor="@color/primary_color_light"
+                android:startColor="@color/primary_color"
                 android:type="linear" />
             <corners android:radius="16dp" />
         </shape>
@@ -28,18 +28,8 @@
     <!-- Very subtle pattern overlay -->
     <item>
         <shape>
-            <solid android:color="#02000000" />
+            <solid android:color="#05FFFFFF" />
             <corners android:radius="16dp" />
-        </shape>
-    </item>
-
-    <!-- Thin border -->
-    <item>
-        <shape>
-            <corners android:radius="16dp" />
-            <stroke
-                android:width="0.5dp"
-                android:color="@color/green_100" />
         </shape>
     </item>
 </layer-list>

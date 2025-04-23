@@ -28,6 +28,17 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
 
+        // Set up floating action button for resources
+        findViewById(R.id.fab_resources).setOnClickListener(view -> {
+            // Navigate to Resource Center
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.fragment_container, new ResourceCenterFragment())
+                    .commit();
+            // Update selected item in bottom navigation
+            bottomNavigationView.setSelectedItemId(R.id.nav_resources);
+        });
+
+
         // Set default fragment
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment_container, new HomeFragment())
@@ -43,12 +54,12 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             selectedFragment = new HomeFragment();
         } else if (itemId == R.id.nav_weather) {
             selectedFragment = new WeatherFragment();
+        } else if (itemId == R.id.nav_profile) {
+            selectedFragment = new ProfileFragment();
         } else if (itemId == R.id.nav_resources) {
             selectedFragment = new ResourceCenterFragment();
         } else if (itemId == R.id.nav_expenses) {
             selectedFragment = new ExpenseTrackerFragment();
-        } else if (itemId == R.id.nav_profile) {
-            selectedFragment = new ProfileFragment();
         }
 
         if (selectedFragment != null) {

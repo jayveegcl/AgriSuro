@@ -11,13 +11,16 @@
         <item
             android:id="@+id/nav_resources"
             android:icon="@drawable/ic_edu"
+            android:enabled="false"
             android:title="@string/resources" />
         <item
             android:id="@+id/nav_expenses"
             android:icon="@drawable/ic_expense"
             android:title="@string/expenses" />
+
         <item
             android:id="@+id/nav_profile"
-            android:icon="@drawable/ic_profile"
+            android:icon="@drawable/ic_feature_work"
             android:title="@string/nav_profile"/>
+
     </menu>
