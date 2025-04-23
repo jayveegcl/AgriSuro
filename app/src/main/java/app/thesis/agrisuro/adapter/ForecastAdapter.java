@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import app.thesis.agrisuro.R;
 import app.thesis.agrisuro.models.ForecastDay;
-import com.agrisuro.app.utils.WeatherUtils;
+import app.thesis.agrisuro.utils.WeatherUtils;
 
 import java.util.List;
 

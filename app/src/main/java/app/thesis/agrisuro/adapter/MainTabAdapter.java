@@ -1,36 +1,29 @@
 package app.thesis.agrisuro.adapter;
 
+import android.view.ViewGroup;
+
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.viewpager2.adapter.FragmentStateAdapter;
+import androidx.recyclerview.widget.RecyclerView;
 
-import app.thesis.agrisuro.fragments.ResourceCenterFragment;
-import app.thesis.agrisuro.fragments.ExpenseTrackerFragment;
-import app.thesis.agrisuro.fragments.PesticideFertilizerFragment;
+import app.thesis.agrisuro.fragments.HomeFragment;
 
-public class MainTabAdapter extends FragmentStateAdapter {
-
-    public MainTabAdapter(@NonNull Fragment fragment) {
-        super(fragment);
+public class MainTabAdapter extends RecyclerView.Adapter {
+    public MainTabAdapter(HomeFragment homeFragment) {
     }
 
     @NonNull
     @Override
-    public Fragment createFragment(int position) {
-        switch (position) {
-            case 0:
-                return new ResourceCenterFragment();
-            case 1:
-                return new ExpenseTrackerFragment();
-            case 2:
-                return new PesticideFertilizerFragment();
-            default:
-                return new ResourceCenterFragment();
-        }
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return null;
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+
     }
 
     @Override
     public int getItemCount() {
-        return 3; // Number of tabs
+        return 0;
     }
 }

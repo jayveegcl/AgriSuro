@@ -14,6 +14,8 @@ import app.thesis.agrisuro.fragments.HomeFragment;
 import app.thesis.agrisuro.fragments.ProfileFragment;
 import app.thesis.agrisuro.fragments.ResourceCenterFragment;
 import app.thesis.agrisuro.fragments.WeatherFragment;
+//import app.thesis.agrisuro.fragments.ResourceCenterFragment;
+//import app.thesis.agrisuro.fragments.WeatherFragment;
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
