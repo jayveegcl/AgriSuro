@@ -19,16 +19,17 @@ public class RiceVariantsAdapter extends RecyclerView.Adapter<RiceVariantsAdapte
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView name, type, maturity, yield, resistance, area;
+        TextView name, Average_Yield, Environment, Height, Maturity, Maximum_Yield, Season;
 
         public ViewHolder(View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.riceName);
-            type = itemView.findViewById(R.id.riceType);
-            maturity = itemView.findViewById(R.id.riceMaturity);
-            yield = itemView.findViewById(R.id.riceYield);
-            resistance = itemView.findViewById(R.id.riceResistance);
-            area = itemView.findViewById(R.id.riceArea);
+            Average_Yield = itemView.findViewById(R.id.riceType);
+            Environment = itemView.findViewById(R.id.riceMaturity);
+            Height = itemView.findViewById(R.id.riceYield);
+            Maturity = itemView.findViewById(R.id.riceResistance);
+            Maximum_Yield = itemView.findViewById(R.id.riceArea);
+            Season = itemView.findViewById(R.id.riceArea);
         }
     }
 
@@ -40,16 +41,17 @@ public class RiceVariantsAdapter extends RecyclerView.Adapter<RiceVariantsAdapte
     }
 
     @Override
-    public void onBindViewHolder(RiceVariantsAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, int position) {
         Pair<String, RiceVariants> pair = riceList.get(position);
         RiceVariants variant = pair.second;
 
         holder.name.setText(pair.first);
-        holder.type.setText("Type: " + variant.type);
-        holder.maturity.setText("Maturity: " + variant.maturity_days + " days");
-        holder.yield.setText("Yield: " + variant.yield);
-        holder.resistance.setText("Resistance: " + variant.resistance);
-        holder.area.setText("Area: " + variant.suitable_area);
+        holder.Average_Yield.setText("Average Yield: " + variant.Average_Yield);
+        holder.Environment.setText("Environment: " + variant.Environment + " days");
+        holder.Height.setText("Height: " + variant.Height);
+        holder.Maturity.setText("Maturity: " + variant.Maturity);
+        holder.Maximum_Yield.setText("Maximum_Yield: " + variant.Maximum_Yield);
+        holder.Season.setText("Season: " + variant.Season);
     }
 
     @Override
