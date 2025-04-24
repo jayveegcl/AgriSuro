@@ -7,10 +7,12 @@ public class RiceVariants {
     public String Maturity;
     public String Maximum_Yield;
     public String Season;
+    public String imagePath;
 
     public RiceVariants() {}  // Needed for Firestore deserialization
 
-    public RiceVariants(String Average_Yield, String Environment, String Height, String Maturity, String Maximum_Yield, String Season) {
+    public RiceVariants(String imagePath, String Average_Yield, String Environment, String Height, String Maturity, String Maximum_Yield, String Season) {
+        this.imagePath = imagePath;
         this.Average_Yield = Average_Yield;
         this.Environment = Environment;
         this.Height = Height;
