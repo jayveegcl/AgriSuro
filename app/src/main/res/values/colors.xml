@@ -10,7 +10,9 @@
     <color name="colorPrimary">#4CAF50</color>
     <color name="colorPrimaryDark">#388E3C</color>
     <color name="colorAccent">#8BC34A</color>
-
+    <color name="colorBorder">#DDDDDD</color>
+    <color name="colorExpense">#D32F2F</color>
+    <color name="colorIncome">#388E3C</color>
 
     <color name="white_transparent">#CCFFFFFF</color>
 

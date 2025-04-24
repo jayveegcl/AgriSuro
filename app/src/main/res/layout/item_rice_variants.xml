@@ -20,6 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="250dp"
             android:scaleType="centerCrop"
+            android:text="Rice Variant Image"
             android:src="@drawable/placeholder_image" />
 
         <LinearLayout
@@ -32,6 +33,7 @@
                 android:id="@+id/riceName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="Rice Variant Name"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -39,6 +41,7 @@
                 android:id="@+id/riceType"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="Description"
                 android:layout_marginTop="4dp" />
 
             <TextView
