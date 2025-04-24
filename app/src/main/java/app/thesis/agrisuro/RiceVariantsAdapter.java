@@ -29,7 +29,7 @@ public class RiceVariantsAdapter extends RecyclerView.Adapter<RiceVariantsAdapte
             Height = itemView.findViewById(R.id.riceYield);
             Maturity = itemView.findViewById(R.id.riceResistance);
             Maximum_Yield = itemView.findViewById(R.id.riceArea);
-            Season = itemView.findViewById(R.id.riceArea);
+            Season = itemView.findViewById(R.id.riceSeason);
         }
     }
 
