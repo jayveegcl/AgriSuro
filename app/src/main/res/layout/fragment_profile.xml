@@ -9,25 +9,55 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="#FFFFFF">
+    android:background="#F5F7FA">
+
+    <!-- Simple profile image -->
+    <ImageView
+        android:id="@+id/profile_image"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:src="@drawable/baseline_person_24"
+        android:color="@color/black"
+        android:contentDescription="Profile picture"
+        android:layout_marginBottom="16dp" />
 
     <TextView
         android:id="@+id/user_details"
         android:text="Welcome, User!"
-        android:textSize="20sp"
+        android:textSize="22sp"
         android:textStyle="bold"
         android:textColor="#333333"
+        android:layout_marginBottom="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <!-- Added email field -->
+    <TextView
+        android:id="@+id/user_email"
+        android:text="user@example.com"
+        android:textSize="16sp"
+        android:textColor="#666666"
         android:layout_marginBottom="24dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
+    <!-- Adding About button -->
+    <Button
+        android:id="@+id/about_btn"
+        android:text="About"
+        android:textAllCaps="false"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Original logout button -->
     <Button
         android:id="@+id/logout"
         android:text="@string/logout"
         android:textAllCaps="false"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:textColor="#FFFFFF"
-        android:layout_marginTop="16dp" />
+        android:textColor="#FFFFFF" />
 
 </LinearLayout>
