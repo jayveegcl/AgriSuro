@@ -17,315 +17,315 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Header -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="horizontal"
+                android:padding="16dp">
 
-                <!-- Header -->
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/weather_forecast"
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
+
                 <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageButton
+                        android:id="@+id/refresh_button"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:contentDescription="@string/refresh"
+                        android:src="@drawable/ic_refresh" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Tabs -->
+
+            <!-- Current Weather View -->
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/weather_tabs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:tabGravity="fill"
+                app:tabMode="fixed">
+
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/current_weather" />
+
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/planting_guide" />
+            </com.google.android.material.tabs.TabLayout>
+
+            <LinearLayout
+                android:id="@+id/current_weather_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <!-- Current Weather Info -->
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
                     android:padding="16dp">
 
                     <TextView
+                        android:id="@+id/textLocation"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/weather_forecast"
-                        android:textSize="25sp"
-                        android:textStyle="bold" />
+                        android:text="--"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toStartOf="@+id/lastUpdateText"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                    <LinearLayout
+                    <TextView
+                        android:id="@+id/lastUpdateText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:text="Updated: --"
+                        android:textSize="12sp"
+                        app:layout_constraintBottom_toBottomOf="@id/textLocation"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/textLocation" />
 
-                        <ImageButton
-                            android:id="@+id/refresh_button"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:background="?attr/selectableItemBackgroundBorderless"
-                            android:contentDescription="@string/refresh"
-                            android:src="@drawable/ic_refresh" />
-                    </LinearLayout>
-                </LinearLayout>
+                    <ImageView
+                        android:id="@+id/weatherIcon"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_marginTop="16dp"
+                        android:contentDescription="Weather Icon"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/textLocation" />
 
-                <!-- Tabs -->
-
-                <!-- Current Weather View -->
-                <com.google.android.material.tabs.TabLayout
-                    android:id="@+id/weather_tabs"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:tabGravity="fill"
-                    app:tabMode="fixed">
-
-                    <com.google.android.material.tabs.TabItem
+                    <TextView
+                        android:id="@+id/textTemperature"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/current_weather" />
+                        android:text="--°C"
+                        android:textSize="48sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/weatherIcon"
+                        app:layout_constraintTop_toTopOf="@id/weatherIcon" />
 
-                    <com.google.android.material.tabs.TabItem
+                    <TextView
+                        android:id="@+id/textFeelsLike"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/planting_guide" />
-                </com.google.android.material.tabs.TabLayout>
+                        android:text="Feels like: --°C"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@id/textTemperature"
+                        app:layout_constraintTop_toBottomOf="@id/textTemperature" />
 
-                <LinearLayout
-                    android:id="@+id/current_weather_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="16dp">
+                    <TextView
+                        android:id="@+id/textCondition"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="--"
+                        android:textSize="18sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/weatherIcon" />
 
-                    <!-- Current Weather Info -->
-                    <androidx.constraintlayout.widget.ConstraintLayout
+                    <View
+                        android:id="@+id/divider"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:background="?android:attr/listDivider"
+                        app:layout_constraintTop_toBottomOf="@id/textCondition" />
+
+                    <!-- Weather Details Grid -->
+                    <androidx.gridlayout.widget.GridLayout
+                        android:id="@+id/weatherDetailsGrid"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="16dp">
+                        app:columnCount="2"
+                        app:layout_constraintTop_toBottomOf="@id/divider"
+                        app:rowCount="3">
 
-                        <TextView
-                            android:id="@+id/textLocation"
+                        <LinearLayout
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:text="--"
-                            android:textSize="20sp"
-                            android:textStyle="bold"
-                            app:layout_constraintEnd_toStartOf="@+id/lastUpdateText"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            android:orientation="vertical"
+                            android:padding="8dp"
+                            app:layout_columnWeight="1">
 
-                        <TextView
-                            android:id="@+id/lastUpdateText"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Updated: --"
-                            android:textSize="12sp"
-                            app:layout_constraintBottom_toBottomOf="@id/textLocation"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="@id/textLocation" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:alpha="0.7"
+                                android:text="Humidity"
+                                android:textSize="12sp" />
 
-                        <ImageView
-                            android:id="@+id/weatherIcon"
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            android:layout_marginTop="16dp"
-                            android:contentDescription="Weather Icon"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/textLocation" />
+                            <TextView
+                                android:id="@+id/textHumidity"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="--%"
+                                android:textSize="16sp" />
+                        </LinearLayout>
 
-                        <TextView
-                            android:id="@+id/textTemperature"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="--°C"
-                            android:textSize="48sp"
-                            android:textStyle="bold"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toEndOf="@id/weatherIcon"
-                            app:layout_constraintTop_toTopOf="@id/weatherIcon" />
-
-                        <TextView
-                            android:id="@+id/textFeelsLike"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Feels like: --°C"
-                            android:textSize="16sp"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="@id/textTemperature"
-                            app:layout_constraintTop_toBottomOf="@id/textTemperature" />
-
-                        <TextView
-                            android:id="@+id/textCondition"
+                        <LinearLayout
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
-                            android:text="--"
-                            android:textSize="18sp"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/weatherIcon" />
+                            android:orientation="vertical"
+                            android:padding="8dp"
+                            app:layout_columnWeight="1">
 
-                        <View
-                            android:id="@+id/divider"
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:layout_marginTop="16dp"
-                            android:layout_marginBottom="16dp"
-                            android:background="?android:attr/listDivider"
-                            app:layout_constraintTop_toBottomOf="@id/textCondition" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:alpha="0.7"
+                                android:text="Wind"
+                                android:textSize="12sp" />
 
-                        <!-- Weather Details Grid -->
-                        <androidx.gridlayout.widget.GridLayout
-                            android:id="@+id/weatherDetailsGrid"
-                            android:layout_width="match_parent"
+                            <TextView
+                                android:id="@+id/textWind"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="-- m/s"
+                                android:textSize="16sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            app:columnCount="2"
-                            app:layout_constraintTop_toBottomOf="@id/divider"
-                            app:rowCount="3">
+                            android:orientation="vertical"
+                            android:padding="8dp"
+                            app:layout_columnWeight="1">
 
-                            <LinearLayout
-                                android:layout_width="0dp"
+                            <TextView
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:orientation="vertical"
-                                android:padding="8dp"
-                                app:layout_columnWeight="1">
+                                android:alpha="0.7"
+                                android:text="Pressure"
+                                android:textSize="12sp" />
 
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:alpha="0.7"
-                                    android:text="Humidity"
-                                    android:textSize="12sp" />
-
-                                <TextView
-                                    android:id="@+id/textHumidity"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="--%"
-                                    android:textSize="16sp" />
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="0dp"
+                            <TextView
+                                android:id="@+id/textPressure"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:orientation="vertical"
-                                android:padding="8dp"
-                                app:layout_columnWeight="1">
+                                android:text="-- hPa"
+                                android:textSize="16sp" />
+                        </LinearLayout>
 
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:alpha="0.7"
-                                    android:text="Wind"
-                                    android:textSize="12sp" />
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="8dp"
+                            app:layout_columnWeight="1">
 
-                                <TextView
-                                    android:id="@+id/textWind"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="-- m/s"
-                                    android:textSize="16sp" />
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="0dp"
+                            <TextView
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:orientation="vertical"
-                                android:padding="8dp"
-                                app:layout_columnWeight="1">
+                                android:alpha="0.7"
+                                android:text="Precipitation"
+                                android:textSize="12sp" />
 
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:alpha="0.7"
-                                    android:text="Pressure"
-                                    android:textSize="12sp" />
-
-                                <TextView
-                                    android:id="@+id/textPressure"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="-- hPa"
-                                    android:textSize="16sp" />
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="0dp"
+                            <TextView
+                                android:id="@+id/textRain"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:orientation="vertical"
-                                android:padding="8dp"
-                                app:layout_columnWeight="1">
+                                android:text="-- mm"
+                                android:textSize="16sp" />
+                        </LinearLayout>
 
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:alpha="0.7"
-                                    android:text="Precipitation"
-                                    android:textSize="12sp" />
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="8dp"
+                            app:layout_columnWeight="1">
 
-                                <TextView
-                                    android:id="@+id/textRain"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="-- mm"
-                                    android:textSize="16sp" />
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="0dp"
+                            <TextView
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:orientation="vertical"
-                                android:padding="8dp"
-                                app:layout_columnWeight="1">
+                                android:alpha="0.7"
+                                android:text="Visibility"
+                                android:textSize="12sp" />
 
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:alpha="0.7"
-                                    android:text="Visibility"
-                                    android:textSize="12sp" />
-
-                                <TextView
-                                    android:id="@+id/textVisibility"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="-- km"
-                                    android:textSize="16sp" />
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="0dp"
+                            <TextView
+                                android:id="@+id/textVisibility"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:orientation="vertical"
-                                android:padding="8dp"
-                                app:layout_columnWeight="1">
+                                android:text="-- km"
+                                android:textSize="16sp" />
+                        </LinearLayout>
 
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:alpha="0.7"
-                                    android:text="UV Index"
-                                    android:textSize="12sp" />
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="8dp"
+                            app:layout_columnWeight="1">
 
-                                <TextView
-                                    android:id="@+id/textUvIndex"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="--"
-                                    android:textSize="16sp" />
-                            </LinearLayout>
-                        </androidx.gridlayout.widget.GridLayout>
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-                </LinearLayout>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:alpha="0.7"
+                                android:text="UV Index"
+                                android:textSize="12sp" />
 
-                <!-- Forecast Section Title -->
-
-                <!-- Forecast RecyclerView Card -->
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:text="   5-Day Forecast"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:cardElevation="4dp"
-                    app:cardCornerRadius="16dp">
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/forecastRecyclerView"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="8dp"
-                        android:nestedScrollingEnabled="false" />
-                </com.google.android.material.card.MaterialCardView>
+                            <TextView
+                                android:id="@+id/textUvIndex"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="--"
+                                android:textSize="16sp" />
+                        </LinearLayout>
+                    </androidx.gridlayout.widget.GridLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
             </LinearLayout>
+
+            <!-- Forecast Section Title -->
+
+            <!-- Forecast RecyclerView Card -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="   5-Day Forecast"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardElevation="4dp"
+                app:cardCornerRadius="16dp">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/forecastRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:nestedScrollingEnabled="false" />
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
         </androidx.core.widget.NestedScrollView>
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

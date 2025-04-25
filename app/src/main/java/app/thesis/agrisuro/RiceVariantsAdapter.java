@@ -43,7 +43,7 @@ public class RiceVariantsAdapter extends RecyclerView.Adapter<RiceVariantsAdapte
     @NonNull
     @Override
     public RiceVariantsAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_rice_variants, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_detail_card, parent, false);
         return new ViewHolder(view);
     }
 
