@@ -1,7 +1,6 @@
 package app.thesis.agrisuro.fragments;
 
 import android.Manifest;
-import android.content.Context;
 import android.content.pm.PackageManager;
 import android.location.Geocoder;
 import android.location.Location;
@@ -25,6 +24,7 @@ import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import app.thesis.agrisuro.R;
 import app.thesis.agrisuro.adapter.ForecastAdapter;
 import app.thesis.agrisuro.models.ForecastItem;
@@ -50,7 +50,6 @@ public class WeatherFragment extends Fragment {
     private ImageView weatherIcon;
     private FusedLocationProviderClient fusedLocationClient;
 
-    // New UI elements
     private TextView textFeelsLike, textPressure, textVisibility, textUvIndex, lastUpdateText;
     private SwipeRefreshLayout swipeRefresh;
     private RecyclerView forecastRecyclerView;
@@ -71,7 +70,6 @@ public class WeatherFragment extends Fragment {
         locationText = view.findViewById(R.id.textLocation);
         weatherIcon = view.findViewById(R.id.weatherIcon);
 
-        // Initialize new UI elements
         initializeNewUiElements(view);
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireContext());
@@ -82,7 +80,6 @@ public class WeatherFragment extends Fragment {
     }
 
     private void initializeNewUiElements(View view) {
-        // Find new UI elements
         textFeelsLike = view.findViewById(R.id.textFeelsLike);
         textPressure = view.findViewById(R.id.textPressure);
         textVisibility = view.findViewById(R.id.textVisibility);
@@ -92,18 +89,15 @@ public class WeatherFragment extends Fragment {
         forecastRecyclerView = view.findViewById(R.id.forecastRecyclerView);
         locationFab = view.findViewById(R.id.locationFab);
 
-        // Setup swipe refresh
-        swipeRefresh.setOnRefreshListener(() -> {
-            checkLocationPermission();
-        });
+        swipeRefresh.setOnRefreshListener(this::checkLocationPermission);
 
-        // Setup location FAB
         locationFab.setOnClickListener(v -> {
             checkLocationPermission();
-            Toast.makeText(requireContext(), "Updating location...", Toast.LENGTH_SHORT).show();
+            if (isAdded()) {
+                Toast.makeText(requireContext(), "Updating location...", Toast.LENGTH_SHORT).show();
+            }
         });
 
-        // Setup forecast RecyclerView
         forecastItems = new ArrayList<>();
         forecastAdapter = new ForecastAdapter(forecastItems);
         forecastRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -123,46 +117,34 @@ public class WeatherFragment extends Fragment {
     }
 
     private void fetchLocation() {
-        if (swipeRefresh != null) {
-            swipeRefresh.setRefreshing(true);
-        }
+        if (swipeRefresh != null) swipeRefresh.setRefreshing(true);
 
         fusedLocationClient.getLastLocation()
-                .addOnSuccessListener(requireActivity(), new OnSuccessListener<Location>() {
-                    @Override
-                    public void onSuccess(Location location) {
-                        if (location != null) {
-                            double lat = location.getLatitude();
-                            double lon = location.getLongitude();
-                            getCityName(lat, lon);  // Get city name from lat/lon
-                            getWeatherData(lat, lon);
-                            getForecastData(lat, lon); // Get 5-day forecast
-                        } else {
-                            Toast.makeText(requireContext(), "Location not available", Toast.LENGTH_SHORT).show();
-                            if (swipeRefresh != null) {
-                                swipeRefresh.setRefreshing(false);
-                            }
-                        }
+                .addOnSuccessListener(requireActivity(), location -> {
+                    if (location != null) {
+                        double lat = location.getLatitude();
+                        double lon = location.getLongitude();
+                        getCityName(lat, lon);
+                        getWeatherData(lat, lon);
+                        getForecastData(lat, lon);
+                    } else if (isAdded()) {
+                        Toast.makeText(requireContext(), "Location not available", Toast.LENGTH_SHORT).show();
+                        if (swipeRefresh != null) swipeRefresh.setRefreshing(false);
                     }
                 });
     }
 
-    // Convert latitude and longitude to a city name using Geocoder
     private void getCityName(double lat, double lon) {
         Geocoder geocoder = new Geocoder(requireContext(), Locale.getDefault());
         try {
             List<android.location.Address> addresses = geocoder.getFromLocation(lat, lon, 1);
-            if (addresses != null && !addresses.isEmpty()) {
+            if (isAdded() && addresses != null && !addresses.isEmpty()) {
                 String cityName = addresses.get(0).getLocality();
-                if (cityName != null) {
-                    locationText.setText(cityName);
-                } else {
-                    locationText.setText("Unknown");
-                }
+                locationText.setText(cityName != null ? cityName : "Unknown");
             }
         } catch (IOException e) {
             e.printStackTrace();
-            locationText.setText("Location: Error");
+            if (isAdded()) locationText.setText("Location: Error");
         }
     }
 
@@ -199,55 +181,51 @@ public class WeatherFragment extends Fragment {
                 String icon = weather.getString("icon");
                 String iconUrl = "https://openweathermap.org/img/wn/" + icon + "@2x.png";
 
-                // New data fields
                 double feelsLike = main.getDouble("feels_like");
                 int pressure = main.getInt("pressure");
-                int visibility = jsonObject.has("visibility") ? jsonObject.getInt("visibility") / 1000 : 0; // Convert to km
+                int visibility = jsonObject.has("visibility") ? jsonObject.getInt("visibility") / 1000 : 0;
 
-                // Get current time for last updated
                 SimpleDateFormat sdf = new SimpleDateFormat("HH:mm, MMM dd", Locale.getDefault());
                 String currentTime = "Updated: " + sdf.format(new Date());
 
-                requireActivity().runOnUiThread(() -> {
-                    temperatureText.setText(temperature);
-                    conditionText.setText(capitalizeFirstLetter(condition));
-                    humidityText.setText(humidity);
-                    windText.setText(windSpeed);
+                if (isAdded()) {
+                    requireActivity().runOnUiThread(() -> {
+                        temperatureText.setText(temperature);
+                        conditionText.setText(capitalizeFirstLetter(condition));
+                        humidityText.setText(humidity);
+                        windText.setText(windSpeed);
 
-                    // Update new UI elements
-                    textFeelsLike.setText("Feels like: " + Math.round(feelsLike) + "°C");
-                    textPressure.setText(pressure + " hPa");
-                    textVisibility.setText(visibility + " km");
-                    textUvIndex.setText("N/A"); // UV index not in this API call
-                    lastUpdateText.setText(currentTime);
+                        textFeelsLike.setText("Feels like: " + Math.round(feelsLike) + "°C");
+                        textPressure.setText(pressure + " hPa");
+                        textVisibility.setText(visibility + " km");
+                        textUvIndex.setText("N/A");
+                        lastUpdateText.setText(currentTime);
 
-                    try {
-                        String rainChance = "N/A";
-                        if (jsonObject.has("rain")) {
-                            JSONObject rain = jsonObject.getJSONObject("rain");
-                            if (rain.has("1h")) {
-                                rainChance = rain.getDouble("1h") + " mm";
+                        try {
+                            String rainChance = "N/A";
+                            if (jsonObject.has("rain")) {
+                                JSONObject rain = jsonObject.getJSONObject("rain");
+                                if (rain.has("1h")) {
+                                    rainChance = rain.getDouble("1h") + " mm";
+                                }
                             }
+                            rainText.setText(rainChance);
+                        } catch (Exception e) {
+                            rainText.setText("N/A");
                         }
-                        rainText.setText(rainChance);
-                    } catch (Exception e) {
-                        rainText.setText("N/A");
-                    }
 
-                    Glide.with(requireContext()).load(iconUrl).into(weatherIcon);
+                        Glide.with(requireContext()).load(iconUrl).into(weatherIcon);
 
-                    if (swipeRefresh != null) {
-                        swipeRefresh.setRefreshing(false);
-                    }
-                });
-
+                        if (swipeRefresh != null) swipeRefresh.setRefreshing(false);
+                    });
+                }
             } catch (Exception e) {
-                requireActivity().runOnUiThread(() -> {
-                    Toast.makeText(requireContext(), "Error fetching weather data", Toast.LENGTH_SHORT).show();
-                    if (swipeRefresh != null) {
-                        swipeRefresh.setRefreshing(false);
-                    }
-                });
+                if (isAdded()) {
+                    requireActivity().runOnUiThread(() -> {
+                        Toast.makeText(requireContext(), "Error fetching weather data", Toast.LENGTH_SHORT).show();
+                        if (swipeRefresh != null) swipeRefresh.setRefreshing(false);
+                    });
+                }
             }
         }).start();
     }
@@ -275,16 +253,13 @@ public class WeatherFragment extends Fragment {
                 JSONObject jsonObject = new JSONObject(json.toString());
                 JSONArray forecastList = jsonObject.getJSONArray("list");
 
-                // Clear previous forecast data
                 forecastItems.clear();
 
-                // Process forecast data (one item per day, not every 3 hours)
                 String currentDate = "";
                 for (int i = 0; i < forecastList.length(); i++) {
                     JSONObject forecast = forecastList.getJSONObject(i);
-                    String dateText = forecast.getString("dt_txt").split(" ")[0]; // Get date part only
+                    String dateText = forecast.getString("dt_txt").split(" ")[0];
 
-                    // Only add one forecast per day
                     if (!dateText.equals(currentDate) && forecastItems.size() < 5) {
                         currentDate = dateText;
 
@@ -297,7 +272,6 @@ public class WeatherFragment extends Fragment {
                         String icon = weather.getString("icon");
                         String iconUrl = "https://openweathermap.org/img/wn/" + icon + "@2x.png";
 
-                        // Format date for display
                         SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
                         SimpleDateFormat outputFormat = new SimpleDateFormat("EEE, MMM dd", Locale.US);
                         Date date = inputFormat.parse(dateText);
@@ -315,15 +289,17 @@ public class WeatherFragment extends Fragment {
                     }
                 }
 
-                requireActivity().runOnUiThread(() -> {
-                    forecastAdapter.notifyDataSetChanged();
-                });
+                if (isAdded()) {
+                    requireActivity().runOnUiThread(() -> forecastAdapter.notifyDataSetChanged());
+                }
 
             } catch (Exception e) {
                 e.printStackTrace();
-                requireActivity().runOnUiThread(() -> {
-                    Toast.makeText(requireContext(), "Error fetching forecast data", Toast.LENGTH_SHORT).show();
-                });
+                if (isAdded()) {
+                    requireActivity().runOnUiThread(() -> {
+                        Toast.makeText(requireContext(), "Error fetching forecast data", Toast.LENGTH_SHORT).show();
+                    });
+                }
             }
         }).start();
     }
@@ -341,11 +317,9 @@ public class WeatherFragment extends Fragment {
         if (requestCode == LOCATION_PERMISSION_REQUEST_CODE) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 fetchLocation();
-            } else {
+            } else if (isAdded()) {
                 Toast.makeText(requireContext(), "Permission denied", Toast.LENGTH_SHORT).show();
-                if (swipeRefresh != null) {
-                    swipeRefresh.setRefreshing(false);
-                }
+                if (swipeRefresh != null) swipeRefresh.setRefreshing(false);
             }
         }
     }

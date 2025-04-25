@@ -91,13 +91,17 @@
         <item>Repairs</item>
         <item>Irrigation</item>
         <item>Pesticides</item>
-        <item>Feed</item>
-        <item>Veterinary</item>
         <item>Transport</item>
         <item>Utilities</item>
         <item>Insurance</item>
         <item>Land Rent</item>
         <item>Miscellaneous</item>
     </string-array>
-
+    <string-array name="income_sources">
+        <item>All Sources</item>
+        <item>Crop Sales</item>
+        <item>Land Lease</item>
+        <item>Government Subsidies</item>
+        <item>Others</item>
+    </string-array>
 </resources>

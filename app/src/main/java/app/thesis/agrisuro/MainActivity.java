@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         } else if (itemId == R.id.nav_resources) {
             selectedFragment = new ResourceCenterFragment();
         } else if (itemId == R.id.nav_expenses) {
-            selectedFragment = new ExpenseTrackerFragment();
+            selectedFragment = new FinanceTrackerFragment();
         }
 
         if (selectedFragment != null) {

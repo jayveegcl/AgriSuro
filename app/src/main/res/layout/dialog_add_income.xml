@@ -9,7 +9,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Add New Expense"
+        android:text="Add New Income"
         android:textSize="20sp"
         android:textStyle="bold"
         android:layout_marginBottom="16dp" />
@@ -64,10 +64,10 @@
         android:layout_marginBottom="8dp" />
 
     <Spinner
-        android:id="@+id/category_spinner"
+        android:id="@+id/source_spinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:entries="@array/expense_categories"
+        android:entries="@array/income_sources"
         android:layout_marginBottom="16dp" />
 
     <Button
