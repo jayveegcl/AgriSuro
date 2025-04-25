@@ -1,4 +1,4 @@
-package app.thesis.agrisuro.fragments;
+package app.thesis.agrisuro;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
@@ -46,7 +46,7 @@ import app.thesis.agrisuro.RiceRecommendationAdapter;
 import app.thesis.agrisuro.models.ForecastItem;
 import app.thesis.agrisuro.RiceRecommendationItem;
 
-public class WeatherFragment extends Fragment {
+public class RiceRecommendationFragment extends Fragment {
 
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 100;
     private TextView temperatureText, conditionText, humidityText, windText, rainText, locationText;
@@ -461,6 +461,17 @@ public class WeatherFragment extends Fragment {
 
         // Basic recommendations based on day in advance
         recommendation.append("• ");
+        switch (daysAhead) {
+            case 1:
+                recommendation.append("Bukas: ");
+                break;
+            case 2:
+                recommendation.append("Sa makalawa: ");
+                break;
+            default:
+                recommendation.append("Sa darating na araw: ");
+                break;
+        }
 
         // Temperature based recommendations
         if (maxTemp > 35) {
