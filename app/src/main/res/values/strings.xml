@@ -80,4 +80,24 @@
     <string name="save">Save</string>
     <string name="cancel">Cancel</string>
     <string name="share">Share</string>
+
+    <string-array name="expense_categories">
+        <item>All Categories</item>
+        <item>Seeds</item>
+        <item>Fertilizer</item>
+        <item>Equipment</item>
+        <item>Labor</item>
+        <item>Fuel</item>
+        <item>Repairs</item>
+        <item>Irrigation</item>
+        <item>Pesticides</item>
+        <item>Feed</item>
+        <item>Veterinary</item>
+        <item>Transport</item>
+        <item>Utilities</item>
+        <item>Insurance</item>
+        <item>Land Rent</item>
+        <item>Miscellaneous</item>
+    </string-array>
+
 </resources>
