@@ -82,7 +82,6 @@
     <string name="share">Share</string>
 
     <string-array name="expense_categories">
-        <item>All Categories</item>
         <item>Seeds</item>
         <item>Fertilizer</item>
         <item>Equipment</item>
@@ -91,8 +90,6 @@
         <item>Repairs</item>
         <item>Irrigation</item>
         <item>Pesticides</item>
-        <item>Feed</item>
-        <item>Veterinary</item>
         <item>Transport</item>
         <item>Utilities</item>
         <item>Insurance</item>
