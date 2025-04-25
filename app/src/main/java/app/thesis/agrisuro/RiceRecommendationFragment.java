@@ -139,7 +139,6 @@ public class RiceRecommendationFragment extends Fragment {
         tabLayout = view.findViewById(R.id.weather_tabs);
         currentWeatherView = view.findViewById(R.id.current_weather_view);
         plantingGuideView = view.findViewById(R.id.planting_guide_view);
-        refreshButton = view.findViewById(R.id.refresh_button);
 
         // Initialize forecast recycler view
         forecastRecyclerView = view.findViewById(R.id.forecastRecyclerView);

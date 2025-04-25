@@ -113,14 +113,6 @@ public class WeatherFragment extends Fragment {
         });
 
         // Set click listeners
-        refreshButton.setOnClickListener(v -> checkLocationPermission());
-        locationFab.setOnClickListener(v -> {
-            checkLocationPermission();
-            if (isAdded()) {
-                Toast.makeText(requireContext(), "Updating location...", Toast.LENGTH_SHORT).show();
-            }
-        });
-
         swipeRefresh.setOnRefreshListener(this::checkLocationPermission);
 
         // Initialize data and fetch weather
@@ -139,7 +131,7 @@ public class WeatherFragment extends Fragment {
         tabLayout = view.findViewById(R.id.weather_tabs);
         currentWeatherView = view.findViewById(R.id.current_weather_view);
         plantingGuideView = view.findViewById(R.id.planting_guide_view);
-        refreshButton = view.findViewById(R.id.refresh_button);
+        //refreshButton = view.findViewById(R.id.refresh_button);
 
         // Initialize forecast recycler view
         forecastRecyclerView = view.findViewById(R.id.forecastRecyclerView);
