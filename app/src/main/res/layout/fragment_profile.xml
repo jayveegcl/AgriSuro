@@ -12,14 +12,15 @@
     android:background="#F5F7FA">
 
     <!-- Simple profile image -->
+
     <ImageView
         android:id="@+id/profile_image"
-        android:layout_width="96dp"
-        android:layout_height="96dp"
-        android:src="@drawable/ic_feature_work"
+        android:layout_width="wrap_content"
+        android:layout_height="112dp"
+        android:layout_marginBottom="16dp"
         android:color="@color/black"
         android:contentDescription="Profile picture"
-        android:layout_marginBottom="16dp" />
+        android:src="@drawable/ic_feature_work" />
 
     <TextView
         android:id="@+id/user_details"
