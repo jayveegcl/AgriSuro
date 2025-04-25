@@ -82,6 +82,7 @@
     <string name="share">Share</string>
 
     <string-array name="expense_categories">
+        <item>All Categories</item>
         <item>Seeds</item>
         <item>Fertilizer</item>
         <item>Equipment</item>
@@ -96,5 +97,11 @@
         <item>Land Rent</item>
         <item>Miscellaneous</item>
     </string-array>
-
+    <string-array name="income_sources">
+        <item>All Sources</item>
+        <item>Crop Sales</item>
+        <item>Land Lease</item>
+        <item>Government Subsidies</item>
+        <item>Others</item>
+    </string-array>
 </resources>
