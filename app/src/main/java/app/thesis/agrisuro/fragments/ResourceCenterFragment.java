@@ -13,6 +13,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import androidx.appcompat.app.AlertDialog;
 import app.thesis.agrisuro.R;
 import app.thesis.agrisuro.RiceVariantsActivity;
+import app.thesis.agrisuro.RiceDiseasesActivity;
 
 public class ResourceCenterFragment extends Fragment {
 
@@ -39,11 +40,9 @@ public class ResourceCenterFragment extends Fragment {
             startActivity(new Intent(getActivity(), RiceVariantsActivity.class));
         });
 
-        /*
         cardRiceDiseases.setOnClickListener(v -> {
             startActivity(new Intent(getActivity(), RiceDiseasesActivity.class));
         });
-        */
 
         // You can uncomment when those activities are ready
         /*

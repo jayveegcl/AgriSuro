@@ -50,6 +50,10 @@
             android:name=".RiceVariantsActivity"
             android:exported="false"
             android:theme="@style/Theme.Material3.Light.NoActionBar" />
+        <activity
+            android:name=".RiceDiseasesActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Material3.Light.NoActionBar" />
 
     </application>
 
