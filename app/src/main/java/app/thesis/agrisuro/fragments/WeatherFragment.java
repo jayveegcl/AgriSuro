@@ -37,8 +37,10 @@ import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
+import java.util.Set;
 
 import app.thesis.agrisuro.R;
 import app.thesis.agrisuro.adapter.ForecastAdapter;
@@ -101,6 +103,7 @@ public class WeatherFragment extends Fragment {
                 } else {
                     currentWeatherView.setVisibility(View.GONE);
                     plantingGuideView.setVisibility(View.VISIBLE);
+                    // Force refresh recommendations when switching to planting tab
                     generateRiceRecommendations();
                 }
             }
@@ -113,7 +116,17 @@ public class WeatherFragment extends Fragment {
         });
 
         // Set click listeners
-        swipeRefresh.setOnRefreshListener(this::checkLocationPermission);
+        swipeRefresh.setOnRefreshListener(() -> {
+            checkLocationPermission();
+            // Always refresh recommendations when swipe refreshing
+            generateRiceRecommendations();
+        });
+
+        // Set location FAB click listener
+        locationFab.setOnClickListener(v -> {
+            checkLocationPermission();
+            generateRiceRecommendations();
+        });
 
         // Initialize data and fetch weather
         checkLocationPermission();
@@ -177,6 +190,12 @@ public class WeatherFragment extends Fragment {
                         Toast.makeText(requireContext(), "Location not available", Toast.LENGTH_SHORT).show();
                         if (swipeRefresh != null) swipeRefresh.setRefreshing(false);
                     }
+                })
+                .addOnFailureListener(e -> {
+                    if (isAdded()) {
+                        Toast.makeText(requireContext(), "Failed to get location", Toast.LENGTH_SHORT).show();
+                        if (swipeRefresh != null) swipeRefresh.setRefreshing(false);
+                    }
                 });
     }
 
@@ -234,6 +253,7 @@ public class WeatherFragment extends Fragment {
                 int pressure = main.getInt("pressure");
                 int visibility = jsonObject.has("visibility") ? jsonObject.getInt("visibility") / 1000 : 0;
 
+                // Get the CURRENT timestamp - this is crucial for showing the correct update time
                 SimpleDateFormat sdf = new SimpleDateFormat("HH:mm, MMM dd", Locale.getDefault());
                 String currentTime = "Updated: " + sdf.format(new Date());
 
@@ -310,44 +330,57 @@ public class WeatherFragment extends Fragment {
 
                 forecastItems.clear();
 
-                String currentDate = "";
-                for (int i = 0; i < forecastList.length(); i++) {
+                // Get today's date for comparison
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
+                String today = dateFormat.format(new Date());
+
+                // Track processed dates to avoid duplicates
+                Set<String> processedDates = new HashSet<>();
+
+                for (int i = 0; i < forecastList.length() && forecastItems.size() < 5; i++) {
                     JSONObject forecast = forecastList.getJSONObject(i);
                     String dateText = forecast.getString("dt_txt").split(" ")[0];
 
-                    if (!dateText.equals(currentDate) && forecastItems.size() < 5) {
-                        currentDate = dateText;
-
-                        JSONObject main = forecast.getJSONObject("main");
-                        JSONObject weather = forecast.getJSONArray("weather").getJSONObject(0);
-
-                        double tempMax = main.getDouble("temp_max");
-                        double tempMin = main.getDouble("temp_min");
-                        String description = weather.getString("description");
-                        String icon = weather.getString("icon");
-                        String iconUrl = "https://openweathermap.org/img/wn/" + icon + "@2x.png";
-
-                        SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
-                        SimpleDateFormat outputFormat = new SimpleDateFormat("EEE, MMM dd", Locale.US);
-                        Date date = inputFormat.parse(dateText);
-                        String formattedDate = outputFormat.format(date);
-
-                        ForecastItem item = new ForecastItem(
-                                formattedDate,
-                                Math.round(tempMax) + "°",
-                                Math.round(tempMin) + "°",
-                                capitalizeFirstLetter(description),
-                                iconUrl
-                        );
-
-                        forecastItems.add(item);
+                    // Skip entries for today and already processed dates
+                    if (dateText.equals(today) || processedDates.contains(dateText)) {
+                        continue;
                     }
+
+                    // Process this date
+                    processedDates.add(dateText);
+
+                    JSONObject main = forecast.getJSONObject("main");
+                    JSONObject weather = forecast.getJSONArray("weather").getJSONObject(0);
+
+                    double tempMax = main.getDouble("temp_max");
+                    double tempMin = main.getDouble("temp_min");
+                    String description = weather.getString("description");
+                    String icon = weather.getString("icon");
+                    String iconUrl = "https://openweathermap.org/img/wn/" + icon + "@2x.png";
+
+                    SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
+                    SimpleDateFormat outputFormat = new SimpleDateFormat("EEE, MMM dd", Locale.US);
+                    Date date = inputFormat.parse(dateText);
+                    String formattedDate = outputFormat.format(date);
+
+                    ForecastItem item = new ForecastItem(
+                            formattedDate,
+                            Math.round(tempMax) + "°",
+                            Math.round(tempMin) + "°",
+                            capitalizeFirstLetter(description),
+                            iconUrl
+                    );
+
+                    forecastItems.add(item);
                 }
 
                 if (isAdded()) {
                     requireActivity().runOnUiThread(() -> {
                         forecastAdapter.notifyDataSetChanged();
+                        // Always regenerate recommendations when forecast data updates
                         generateRiceRecommendations();
+                        // Ensure the swipe refresh indicator is dismissed
+                        if (swipeRefresh != null) swipeRefresh.setRefreshing(false);
                     });
                 }
 
@@ -356,6 +389,7 @@ public class WeatherFragment extends Fragment {
                 if (isAdded()) {
                     requireActivity().runOnUiThread(() -> {
                         Toast.makeText(requireContext(), "Error fetching forecast data", Toast.LENGTH_SHORT).show();
+                        if (swipeRefresh != null) swipeRefresh.setRefreshing(false);
                     });
                 }
             }
@@ -363,10 +397,15 @@ public class WeatherFragment extends Fragment {
     }
 
     private void generateRiceRecommendations() {
+        // Always clear and create new recommendations to ensure fresh data
         recommendationItems.clear();
 
+        // Get current date and time for recommendations
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm, MMM dd", Locale.getDefault());
+        String currentDateTime = sdf.format(new Date());
+
         // Generate recommendation for current day based on current weather
-        String currentRecommendation = generateCurrentDayRecommendation();
+        String currentRecommendation = generateCurrentDayRecommendation(currentDateTime);
         recommendationItems.add(new RiceRecommendationItem("Ngayon", currentRecommendation));
 
         // Generate recommendations for forecasted days
@@ -376,11 +415,19 @@ public class WeatherFragment extends Fragment {
             recommendationItems.add(new RiceRecommendationItem(forecastItem.getDate(), recommendation));
         }
 
-        recommendationAdapter.notifyDataSetChanged();
+        // Notify adapter on UI thread to ensure it's updated
+        if (isAdded()) {
+            requireActivity().runOnUiThread(() -> {
+                recommendationAdapter.notifyDataSetChanged();
+            });
+        }
     }
 
-    private String generateCurrentDayRecommendation() {
+    private String generateCurrentDayRecommendation(String currentDateTime) {
         StringBuilder recommendation = new StringBuilder();
+
+        // Add current date and time to recommendation
+        recommendation.append("Updated: ").append(currentDateTime).append("\n\n");
 
         // Temperature-based recommendations
         if (currentTemp > 35) {
