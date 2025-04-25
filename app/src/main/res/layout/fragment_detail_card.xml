@@ -24,18 +24,6 @@
                 android:scaleType="centerCrop"
                 android:src="@drawable/placeholder_image" />
 
-            <TextView
-                android:id="@+id/type_badge"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="top|end"
-                android:layout_margin="8dp"
-                android:background="@drawable/badge_background"
-                android:paddingHorizontal="8dp"
-                android:paddingVertical="4dp"
-                android:text="@string/rice"
-                android:textColor="@color/white"
-                android:textSize="12sp" />
         </FrameLayout>
 
         <LinearLayout
