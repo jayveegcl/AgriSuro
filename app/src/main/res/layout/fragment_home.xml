@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_card_accent">
+    android:background="@drawable/bg_card">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -11,69 +11,42 @@
         android:orientation="vertical"
         android:padding="16dp">
 
-        <!-- Welcome Header -->
-        <RelativeLayout
+        <!-- Welcome Card -->
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="220dp"
-            android:layout_marginBottom="16dp">
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/bg_card_accent"
-                android:scaleType="centerCrop"
-                android:alpha="0.7" />
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            app:cardBackgroundColor="@color/purple_200"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="2dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="16dp"
-                android:layout_centerVertical="true"
-                android:background="@color/colorPrimary">
+                android:padding="16dp">
 
                 <TextView
-                    android:id="@+id/welcome_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/welcome_to_agrisuro"
-                    android:textColor="#2E7D32"
-                    android:textSize="30sp"
-                    android:textStyle="bold"
-                    android:shadowDx="1"
-                    android:shadowDy="1"
-                    android:shadowRadius="2"
-                    android:animateLayoutChanges="true" />
+                    android:textColor="@color/black"
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/welcome_subtitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
+                    android:layout_marginBottom="16dp"
                     android:text="@string/welcome_description"
-                    android:textColor="#2E7D32"
-                    android:textSize="18sp"
-                    android:shadowDx="1"
-                    android:shadowDy="1"
-                    android:shadowRadius="2"
-                    android:animateLayoutChanges="true" />
+                    android:textColor="@color/black" />
+
             </LinearLayout>
-        </RelativeLayout>
+        </androidx.cardview.widget.CardView>
 
-        <!-- Mission Statement -->
-        <TextView
-            android:id="@+id/mission_statement"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:text="@string/mission_statement"
-            android:textColor="@color/text_dark"
-            android:textSize="16sp"
-            android:textStyle="italic"
-            android:textAlignment="center"
-            android:animateLayoutChanges="true" />
+        <!-- Weather Section -->
 
-        <!-- Feature Cards -->
         <androidx.cardview.widget.CardView
             android:id="@+id/card_weather"
             android:layout_width="match_parent"
@@ -228,6 +201,7 @@
             app:cardBackgroundColor="@color/card_background"
             app:cardCornerRadius="12dp"
             app:cardElevation="3dp"/>
+
 
 
     </LinearLayout>
