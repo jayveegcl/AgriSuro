@@ -299,14 +299,4 @@
     </androidx.core.widget.NestedScrollView>
 
     <!-- FAB for quick help or support -->
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/helpFab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="20dp"
-        android:contentDescription="Get Help"
-        app:srcCompat="@drawable/ic_help"
-        app:backgroundTint="@color/colorPrimary"
-        app:tint="@color/white" />
 </androidx.cardview.widget.CardView>
