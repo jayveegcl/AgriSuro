@@ -47,7 +47,7 @@
             android:padding="16dp">
 
             <TextView
-                android:id="@+id/riceName"
+                android:id="@+id/rice1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/black"
@@ -55,7 +55,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/riceType"
+                android:id="@+id/rice2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"

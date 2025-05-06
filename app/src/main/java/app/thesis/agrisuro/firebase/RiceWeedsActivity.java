@@ -1,0 +1,52 @@
+package app.thesis.agrisuro.firebase;
+
+import android.os.Bundle;
+import android.util.Pair;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import app.thesis.agrisuro.R;
+
+public class RiceWeedsActivity extends AppCompatActivity {
+    private RecyclerView recyclerView;
+    private RiceWeedsAdapter adapter;
+    private List<Pair<String, RiceWeeds>> riceWeedList = new ArrayList<>();
+    private FirebaseFirestore db;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        FirebaseApp.initializeApp(this);
+        setContentView(R.layout.activity_rice_variants);
+
+        db = FirebaseFirestore.getInstance();
+        recyclerView = findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        db.collection("rice_weeds")
+                .get()
+                .addOnSuccessListener(queryDocumentSnapshots -> {
+                    for (QueryDocumentSnapshot doc : queryDocumentSnapshots) {
+                        RiceWeeds variant = doc.toObject(RiceWeeds.class);
+                        riceWeedList.add(new Pair<>(doc.getId(), variant));
+                    }
+
+                    adapter = new RiceWeedsAdapter(riceWeedList);
+                    recyclerView.setAdapter(adapter);
+                })
+                .addOnFailureListener(e -> {
+                    Toast.makeText(RiceWeedsActivity.this, "Error: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                    e.printStackTrace(); // Also logs in Logcat
+                });
+    }
+}

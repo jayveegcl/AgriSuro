@@ -31,13 +31,13 @@ public class RiceVariantsAdapter extends RecyclerView.Adapter<RiceVariantsAdapte
 
         public ViewHolder(View itemView) {
             super(itemView);
-            name = itemView.findViewById(R.id.riceName);
-            Average_Yield = itemView.findViewById(R.id.riceType);
-            Environment = itemView.findViewById(R.id.riceMaturity);
-            Height = itemView.findViewById(R.id.riceYield);
-            Maturity = itemView.findViewById(R.id.riceResistance);
-            Maximum_Yield = itemView.findViewById(R.id.riceArea);
-            Season = itemView.findViewById(R.id.riceSeason);
+            name = itemView.findViewById(R.id.rice1);
+            Average_Yield = itemView.findViewById(R.id.rice2);
+            Environment = itemView.findViewById(R.id.rice3);
+            Height = itemView.findViewById(R.id.rice4);
+            Maturity = itemView.findViewById(R.id.rice5);
+            Maximum_Yield = itemView.findViewById(R.id.rice6);
+            Season = itemView.findViewById(R.id.rice7);
             riceImage = itemView.findViewById(R.id.riceImage);
         }
     }

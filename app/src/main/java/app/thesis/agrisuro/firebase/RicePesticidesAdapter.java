@@ -17,45 +17,46 @@ import java.util.List;
 
 import app.thesis.agrisuro.R;
 
-public class RiceDiseasesAdapter extends RecyclerView.Adapter<RiceDiseasesAdapter.ViewHolder> {
-    private List<Pair<String, RiceDiseases>> riceDiseaseList;
 
-    public RiceDiseasesAdapter(List<Pair<String, RiceDiseases>> riceDiseaseList) {
-        this.riceDiseaseList = riceDiseaseList;
+public class RicePesticidesAdapter extends RecyclerView.Adapter<RicePesticidesAdapter.ViewHolder> {
+    private List<Pair<String, RicePesticides>> ricePesticideList;
+
+    public RicePesticidesAdapter(List<Pair<String, RicePesticides>> ricePesticideList) {
+        this.ricePesticideList = ricePesticideList;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView name, Disease_Management, Factors, Local_name, Symptoms;
+        TextView name, Brand_name, Ingredient, Tagalog, Use;
         ImageView riceImage;
 
         public ViewHolder(View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.rice1);
-            Disease_Management = itemView.findViewById(R.id.rice2);
-            Factors = itemView.findViewById(R.id.rice3);
-            Local_name = itemView.findViewById(R.id.rice4);
-            Symptoms = itemView.findViewById(R.id.rice5);
+            Brand_name = itemView.findViewById(R.id.rice2);
+            Ingredient = itemView.findViewById(R.id.rice3);
+            Tagalog = itemView.findViewById(R.id.rice4);
+            Use = itemView.findViewById(R.id.rice5);
             riceImage = itemView.findViewById(R.id.riceImage);
         }
     }
 
     @NonNull
     @Override
-    public RiceDiseasesAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public RicePesticidesAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_detail_card, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        Pair<String, RiceDiseases> pair = riceDiseaseList.get(position);
-        RiceDiseases variant = pair.second;
+        Pair<String, RicePesticides> pair = ricePesticideList.get(position);
+        RicePesticides variant = pair.second;
 
         holder.name.setText(pair.first);
-        holder.Disease_Management.setText("Disease Management: " + variant.Disease_Management);
-        holder.Factors.setText("Factors: " + variant.Factors + " days");
-        holder.Local_name.setText("Local Name: " + variant.Local_name);
-        holder.Symptoms.setText("Symptoms: " + variant.Symptoms);
+        holder.Brand_name.setText("Brand Name: " + variant.Brand_name);
+        holder.Ingredient.setText("Ingredient: " + variant.Ingredient);
+        holder.Tagalog.setText("Tagalog: " + variant.Tagalog);
+        holder.Use.setText("Use: " + variant.Use);
 
         // Load image from Firebase Storage using Glide
         if (variant.imagePath != null && !variant.imagePath.isEmpty()) {
@@ -79,6 +80,6 @@ public class RiceDiseasesAdapter extends RecyclerView.Adapter<RiceDiseasesAdapte
 
     @Override
     public int getItemCount() {
-        return riceDiseaseList.size();
+        return ricePesticideList.size();
     }
 }

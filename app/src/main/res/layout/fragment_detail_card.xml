@@ -20,7 +20,7 @@
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/riceImage"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="300dp"
                 android:scaleType="centerCrop"
                 android:src="@drawable/placeholder_image" />
 
@@ -33,7 +33,7 @@
             android:padding="16dp">
 
             <TextView
-                android:id="@+id/riceName"
+                android:id="@+id/rice1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Rice Variant Name"
@@ -41,7 +41,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/riceType"
+                android:id="@+id/rice2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -49,7 +49,7 @@
                 android:textColor="@color/gray_700" />
 
             <TextView
-                android:id="@+id/riceMaturity"
+                android:id="@+id/rice3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -57,25 +57,25 @@
                 android:text="@string/key_characteristics" />
 
             <TextView
-                android:id="@+id/riceYield"
+                android:id="@+id/rice4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp" />
 
             <TextView
-                android:id="@+id/riceResistance"
+                android:id="@+id/rice5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp" />
 
             <TextView
-                android:id="@+id/riceArea"
+                android:id="@+id/rice6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp" />
 
             <TextView
-                android:id="@+id/riceSeason"
+                android:id="@+id/rice7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp" />
