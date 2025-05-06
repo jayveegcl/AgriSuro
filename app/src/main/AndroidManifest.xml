@@ -47,11 +47,11 @@
             android:exported="false"
             android:theme="@style/Theme.Material3.Light.NoActionBar" />
         <activity
-            android:name=".RiceVariantsActivity"
+            android:name=".firebase.RiceVariantsActivity"
             android:exported="false"
             android:theme="@style/Theme.Material3.Light.NoActionBar" />
         <activity
-            android:name=".RiceDiseasesActivity"
+            android:name=".firebase.RiceDiseasesActivity"
             android:exported="false"
             android:theme="@style/Theme.Material3.Light.NoActionBar" />
 

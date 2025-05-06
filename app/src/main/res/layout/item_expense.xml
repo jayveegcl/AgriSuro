@@ -51,7 +51,7 @@
             android:layout_height="wrap_content"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:textColor="#4CAF50"
+            android:textColor="#F44336"
             android:text="₱0.00"
             android:layout_gravity="center_vertical" />
     </LinearLayout>

@@ -1,4 +1,4 @@
-package app.thesis.agrisuro;
+package app.thesis.agrisuro.expense;
 
 public class SummaryItem {
     private String name;

@@ -1,4 +1,4 @@
-package app.thesis.agrisuro;
+package app.thesis.agrisuro.expense;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;

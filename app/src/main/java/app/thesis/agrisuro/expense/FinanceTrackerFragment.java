@@ -1,4 +1,4 @@
-package app.thesis.agrisuro;
+package app.thesis.agrisuro.expense;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -31,6 +31,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+
+import app.thesis.agrisuro.R;
 
 public class FinanceTrackerFragment extends Fragment {
 

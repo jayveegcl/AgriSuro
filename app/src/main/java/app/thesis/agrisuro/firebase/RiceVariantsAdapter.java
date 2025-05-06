@@ -1,4 +1,4 @@
-package app.thesis.agrisuro;
+package app.thesis.agrisuro.firebase;
 
 import android.util.Pair;
 import android.view.LayoutInflater;
@@ -15,45 +15,52 @@ import com.google.firebase.storage.FirebaseStorage;
 
 import java.util.List;
 
-public class RiceDiseasesAdapter extends RecyclerView.Adapter<RiceDiseasesAdapter.ViewHolder> {
-    private List<Pair<String, RiceDiseases>> riceDiseaseList;
+import app.thesis.agrisuro.R;
 
-    public RiceDiseasesAdapter(List<Pair<String, RiceDiseases>> riceDiseaseList) {
-        this.riceDiseaseList = riceDiseaseList;
+
+public class RiceVariantsAdapter extends RecyclerView.Adapter<RiceVariantsAdapter.ViewHolder> {
+    private List<Pair<String, RiceVariants>> riceList;
+
+    public RiceVariantsAdapter(List<Pair<String, RiceVariants>> riceList) {
+        this.riceList = riceList;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView name, Disease_Management, Factors, Local_name, Symptoms;
+        TextView name, Average_Yield, Environment, Height, Maturity, Maximum_Yield, Season;
         ImageView riceImage;
 
         public ViewHolder(View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.riceName);
-            Disease_Management = itemView.findViewById(R.id.riceType);
-            Factors = itemView.findViewById(R.id.riceMaturity);
-            Local_name = itemView.findViewById(R.id.riceYield);
-            Symptoms = itemView.findViewById(R.id.riceResistance);
+            Average_Yield = itemView.findViewById(R.id.riceType);
+            Environment = itemView.findViewById(R.id.riceMaturity);
+            Height = itemView.findViewById(R.id.riceYield);
+            Maturity = itemView.findViewById(R.id.riceResistance);
+            Maximum_Yield = itemView.findViewById(R.id.riceArea);
+            Season = itemView.findViewById(R.id.riceSeason);
             riceImage = itemView.findViewById(R.id.riceImage);
         }
     }
 
     @NonNull
     @Override
-    public RiceDiseasesAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public RiceVariantsAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_detail_card, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        Pair<String, RiceDiseases> pair = riceDiseaseList.get(position);
-        RiceDiseases variant = pair.second;
+        Pair<String, RiceVariants> pair = riceList.get(position);
+        RiceVariants variant = pair.second;
 
         holder.name.setText(pair.first);
-        holder.Disease_Management.setText("Disease Management: " + variant.Disease_Management);
-        holder.Factors.setText("Factors: " + variant.Factors + " days");
-        holder.Local_name.setText("Local Name: " + variant.Local_name);
-        holder.Symptoms.setText("Symptoms: " + variant.Symptoms);
+        holder.Average_Yield.setText("Average Yield: " + variant.Average_Yield);
+        holder.Environment.setText("Environment: " + variant.Environment + " days");
+        holder.Height.setText("Height: " + variant.Height);
+        holder.Maturity.setText("Maturity: " + variant.Maturity);
+        holder.Maximum_Yield.setText("Maximum Yield: " + variant.Maximum_Yield);
+        holder.Season.setText("Season: " + variant.Season);
 
         // Load image from Firebase Storage using Glide
         if (variant.imagePath != null && !variant.imagePath.isEmpty()) {
@@ -77,6 +84,6 @@ public class RiceDiseasesAdapter extends RecyclerView.Adapter<RiceDiseasesAdapte
 
     @Override
     public int getItemCount() {
-        return riceDiseaseList.size();
+        return riceList.size();
     }
 }

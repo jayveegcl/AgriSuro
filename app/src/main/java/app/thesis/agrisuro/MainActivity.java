@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import app.thesis.agrisuro.expense.FinanceTrackerFragment;
 import app.thesis.agrisuro.fragments.HomeFragment;
 import app.thesis.agrisuro.fragments.ProfileFragment;
 import app.thesis.agrisuro.fragments.ResourceCenterFragment;

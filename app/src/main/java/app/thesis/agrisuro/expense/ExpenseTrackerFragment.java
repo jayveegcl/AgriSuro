@@ -1,4 +1,4 @@
-package app.thesis.agrisuro;
+package app.thesis.agrisuro.expense;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -26,6 +26,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+
+import app.thesis.agrisuro.R;
 
 public class ExpenseTrackerFragment extends Fragment {
 

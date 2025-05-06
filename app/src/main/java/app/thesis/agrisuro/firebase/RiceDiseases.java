@@ -1,4 +1,4 @@
-package app.thesis.agrisuro;
+package app.thesis.agrisuro.firebase;
 
 public class RiceDiseases {
     public String Disease_Management;

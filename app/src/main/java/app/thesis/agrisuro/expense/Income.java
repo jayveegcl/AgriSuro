@@ -1,23 +1,23 @@
-package app.thesis.agrisuro;
+package app.thesis.agrisuro.expense;
 
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "expenses")
-public class Expense {
+@Entity(tableName = "incomes")
+public class Income {
 
     @PrimaryKey(autoGenerate = true)
     private int id;
     private String description;
     private double amount;
-    private String category;
+    private String source;
     private long date;
 
-    public Expense(int id, String description, double amount, String category, long date) {
+    public Income(int id, String description, double amount, String source, long date) {
         this.id = id;
         this.description = description;
         this.amount = amount;
-        this.category = category;
+        this.source = source;
         this.date = date;
     }
 
@@ -45,12 +45,12 @@ public class Expense {
         this.amount = amount;
     }
 
-    public String getCategory() {
-        return category;
+    public String getSource() {
+        return source;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
+    public void setSource(String source) {
+        this.source = source;
     }
 
     public long getDate() {

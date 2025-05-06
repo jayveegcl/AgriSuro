@@ -12,8 +12,8 @@ import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import androidx.appcompat.app.AlertDialog;
 import app.thesis.agrisuro.R;
-import app.thesis.agrisuro.RiceVariantsActivity;
-import app.thesis.agrisuro.RiceDiseasesActivity;
+import app.thesis.agrisuro.firebase.RiceVariantsActivity;
+import app.thesis.agrisuro.firebase.RiceDiseasesActivity;
 
 public class ResourceCenterFragment extends Fragment {
 
