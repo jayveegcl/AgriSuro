@@ -26,13 +26,13 @@ public class RicePesticidesAdapter extends RecyclerView.Adapter<RicePesticidesAd
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView name, Brand_name, Ingredient, Tagalog, Use;
+        TextView name, Type, Ingredient, Tagalog, Use;
         ImageView riceImage;
 
         public ViewHolder(View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.rice1);
-            Brand_name = itemView.findViewById(R.id.rice2);
+            Type = itemView.findViewById(R.id.rice2);
             Ingredient = itemView.findViewById(R.id.rice3);
             Tagalog = itemView.findViewById(R.id.rice4);
             Use = itemView.findViewById(R.id.rice5);
@@ -53,7 +53,7 @@ public class RicePesticidesAdapter extends RecyclerView.Adapter<RicePesticidesAd
         RicePesticides variant = pair.second;
 
         holder.name.setText(pair.first);
-        holder.Brand_name.setText("Brand Name: " + variant.Brand_name);
+        holder.Type.setText("Type: " + variant.Type);
         holder.Ingredient.setText("Ingredient: " + variant.Ingredient);
         holder.Tagalog.setText("Tagalog: " + variant.Tagalog);
         holder.Use.setText("Use: " + variant.Use);

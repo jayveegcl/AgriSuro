@@ -20,8 +20,9 @@
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/riceImage"
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:scaleType="centerCrop"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
                 android:src="@drawable/placeholder_image" />
 
         </FrameLayout>
@@ -36,7 +37,7 @@
                 android:id="@+id/rice1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Rice Variant Name"
+                android:text="Name"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -44,41 +45,43 @@
                 android:id="@+id/rice2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="This is a detailed description of the rice variant, including its origin, typical yield, and growing conditions."
-                android:textColor="@color/gray_700" />
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp" />
 
             <TextView
                 android:id="@+id/rice3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="8dp"
-                android:text="@string/key_characteristics" />
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp" />
 
             <TextView
                 android:id="@+id/rice4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp" />
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp" />
 
             <TextView
                 android:id="@+id/rice5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp" />
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp" />
 
             <TextView
                 android:id="@+id/rice6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp" />
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp" />
 
             <TextView
                 android:id="@+id/rice7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp" />
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp" />
 
         </LinearLayout>
     </LinearLayout>

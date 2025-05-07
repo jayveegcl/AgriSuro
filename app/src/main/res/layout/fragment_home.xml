@@ -81,13 +81,6 @@
 
             <!-- Features Section Title -->
 
-            <!-- Features Cards -->
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/features_recycler_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:nestedScrollingEnabled="false" />
-
             <!-- Quick Access Section -->
             <TextView
                 android:layout_width="match_parent"
@@ -241,14 +234,14 @@
                         <ImageView
                             android:layout_width="48dp"
                             android:layout_height="48dp"
-                            android:src="@drawable/ic_expense"
+                            android:src="@drawable/ic_plant"
                             android:contentDescription="Market Price Icon" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
-                            android:text="Expense Tracker"
+                            android:text="Crop Calendar"
                             android:textSize="16sp"
                             android:textColor="@color/text_dark"
                             android:textStyle="bold" />

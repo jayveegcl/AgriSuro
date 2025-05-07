@@ -57,8 +57,7 @@ public class ResourceCenterFragment extends Fragment {
         cardRiceInsects.setOnClickListener(v -> {
             startActivity(new Intent(getActivity(), RiceInsectsActivity.class));
         });
-
-
+        
         cardPesticides.setOnClickListener(v -> {
             startActivity(new Intent(getActivity(), RicePesticidesActivity.class));
         });

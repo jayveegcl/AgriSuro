@@ -19,11 +19,6 @@
     <color name="rice_gold">#D4A017</color>
     <color name="text_dark">#212121</color>
 
-
-
-
-
-
     <color name="white_transparent">#CCFFFFFF</color>
 
     <!-- Green palette -->
@@ -89,7 +84,6 @@
     <color name="gray_700">#616161</color>
     <color name="gray_800">#424242</color>
     <color name="gray_900">#212121</color>
-
 
     <!-- Yellow palette -->
     <color name="yellow_500">#FFEB3B</color>

@@ -56,7 +56,7 @@ public class RiceVariantsAdapter extends RecyclerView.Adapter<RiceVariantsAdapte
 
         holder.name.setText(pair.first);
         holder.Average_Yield.setText("Average Yield: " + variant.Average_Yield);
-        holder.Environment.setText("Environment: " + variant.Environment + " days");
+        holder.Environment.setText("Environment: " + variant.Environment);
         holder.Height.setText("Height: " + variant.Height);
         holder.Maturity.setText("Maturity: " + variant.Maturity);
         holder.Maximum_Yield.setText("Maximum Yield: " + variant.Maximum_Yield);

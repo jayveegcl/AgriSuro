@@ -70,6 +70,10 @@
             android:name=".firebase.RiceFertilizersActivity"
             android:exported="false"
             android:theme="@style/Theme.Material3.Light.NoActionBar" />
+        <activity
+            android:name=".cropcalendar.CropPlannerActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Material3.Light.NoActionBar" />
 
     </application>
 

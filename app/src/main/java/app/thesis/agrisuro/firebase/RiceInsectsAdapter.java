@@ -26,14 +26,14 @@ public class RiceInsectsAdapter extends RecyclerView.Adapter<RiceInsectsAdapter.
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView name, Damage, Identifying_Marks, Location, Tagalog_name;
+        TextView name, Damage, Identifiying_Marks, Location, Tagalog_name;
         ImageView riceImage;
 
         public ViewHolder(View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.rice1);
             Damage = itemView.findViewById(R.id.rice2);
-            Identifying_Marks = itemView.findViewById(R.id.rice3);
+            Identifiying_Marks = itemView.findViewById(R.id.rice3);
             Location = itemView.findViewById(R.id.rice4);
             Tagalog_name = itemView.findViewById(R.id.rice5);
             riceImage = itemView.findViewById(R.id.riceImage);
@@ -54,7 +54,7 @@ public class RiceInsectsAdapter extends RecyclerView.Adapter<RiceInsectsAdapter.
 
         holder.name.setText(pair.first);
         holder.Damage.setText("Damage: " + variant.Damage);
-        holder.Identifying_Marks.setText("Identifying Marks: " + variant.Identifying_Marks);
+        holder.Identifiying_Marks.setText("Identifying Marks: " + variant.Identifiying_Marks);
         holder.Location.setText("Location: " + variant.Location);
         holder.Tagalog_name.setText("Tagalog Name: " + variant.Tagalog_name);
 

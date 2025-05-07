@@ -107,4 +107,12 @@
         <item>Government Subsidies</item>
         <item>Others</item>
     </string-array>
+
+    <string name="add_task">Add Task</string>
+    <string name="task_list">Rice Crop Tasks</string>
+    <string name="delete_task">Delete Task</string>
+    <string name="enter_task_name">Enter task name</string>
+    <string name="add">Add</string>
+    <string name="calendar">Calendar</string>
+
 </resources>
