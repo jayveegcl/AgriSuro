@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TextView;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -28,21 +29,33 @@ public class CropPlannerActivity extends AppCompatActivity {
     private List<TaskPhase> taskPhases;
     private Calendar selectedDate = Calendar.getInstance();
     private SimpleDateFormat dateFormat = new SimpleDateFormat("MMM dd, yyyy", Locale.getDefault());
+    private TaskPreferencesManager preferencesManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_crop_planner);
 
-        // Initialize views
+        // Initialize views - MAKE SURE THESE IDS MATCH YOUR XML
         textViewStartDate = findViewById(R.id.textViewStartDate);
         buttonSelectDate = findViewById(R.id.buttonSelectDate);
+
+        // This is the critical part - ensure this ID exists in your layout
         recyclerViewTasks = findViewById(R.id.recyclerViewTasks);
+
+        // Double check if recyclerView was found
+        if (recyclerViewTasks == null) {
+            Toast.makeText(this, "Error: RecyclerView not found in layout!", Toast.LENGTH_LONG).show();
+            return; // Prevent NPE by exiting early
+        }
+
+        // Initialize preferences manager
+        preferencesManager = new TaskPreferencesManager(this);
 
         // Setup RecyclerView
         recyclerViewTasks.setLayoutManager(new LinearLayoutManager(this));
         taskPhases = new ArrayList<>();
-        taskAdapter = new TaskAdapter(taskPhases);
+        taskAdapter = new TaskAdapter(taskPhases, preferencesManager);
         recyclerViewTasks.setAdapter(taskAdapter);
 
         // Setup date selection
@@ -53,8 +66,21 @@ public class CropPlannerActivity extends AppCompatActivity {
             }
         });
 
-        // Initialize with current date
+        // Load saved date or use current date
+        long savedDateMillis = preferencesManager.getStartDate(selectedDate.getTimeInMillis());
+        selectedDate.setTimeInMillis(savedDateMillis);
+
+        // Initialize with saved date
         updateStartDate(selectedDate.getTime());
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        // Save task status when the app is paused
+        if (taskAdapter != null) {
+            taskAdapter.saveTaskStatus();
+        }
     }
 
     private void showDatePickerDialog() {
@@ -63,10 +89,21 @@ public class CropPlannerActivity extends AppCompatActivity {
                 new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        selectedDate.set(Calendar.YEAR, year);
-                        selectedDate.set(Calendar.MONTH, month);
-                        selectedDate.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                        updateStartDate(selectedDate.getTime());
+                        // Check if date is different from current
+                        boolean dateChanged = selectedDate.get(Calendar.YEAR) != year ||
+                                selectedDate.get(Calendar.MONTH) != month ||
+                                selectedDate.get(Calendar.DAY_OF_MONTH) != dayOfMonth;
+
+                        if (dateChanged) {
+                            // Clear saved task statuses when date changes
+                            preferencesManager.clearAllData();
+
+                            // Update to new date
+                            selectedDate.set(Calendar.YEAR, year);
+                            selectedDate.set(Calendar.MONTH, month);
+                            selectedDate.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                            updateStartDate(selectedDate.getTime());
+                        }
                     }
                 },
                 selectedDate.get(Calendar.YEAR),
@@ -78,6 +115,8 @@ public class CropPlannerActivity extends AppCompatActivity {
 
     private void updateStartDate(Date startDate) {
         textViewStartDate.setText("Start Date: " + dateFormat.format(startDate));
+        // Save the selected date
+        preferencesManager.saveStartDate(startDate.getTime());
         generateTaskPhases(startDate);
     }
 
@@ -277,8 +316,14 @@ public class CropPlannerActivity extends AppCompatActivity {
         );
         taskPhases.add(harvestPhase);
 
+        // Load saved task states
+        preferencesManager.loadTaskStatus(taskPhases);
+
         // Notify adapter of changes
         taskAdapter.notifyDataSetChanged();
+
+        // Show confirmation to user
+        Toast.makeText(this, "Task calendar updated", Toast.LENGTH_SHORT).show();
     }
 
     private String formatDateRange(Date startDate, int durationDays) {
