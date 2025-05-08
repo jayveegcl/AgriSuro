@@ -7,59 +7,60 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="colorPrimary">#4CAF50</color>
-    <color name="colorPrimaryDark">#388E3C</color>
-    <color name="colorAccent">#8BC34A</color>
-    <color name="colorBorder">#DDDDDD</color>
-    <color name="colorExpense">#D32F2F</color>
-    <color name="colorIncome">#388E3C</color>
+    <color name="colorPrimary">#2E7D32</color>          <!-- Deep Green -->
+    <color name="colorPrimaryDark">#1B5E20</color>      <!-- Darker Green -->
+    <color name="colorPrimaryLight">#4CAF50</color>     <!-- Light Green -->
+    <color name="colorAccent">#FFA000</color>           <!-- Amber -->
+    <color name="colorBorder">#E0E0E0</color>           <!-- Light Gray Border -->
+    <color name="colorExpense">#D32F2F</color>          <!-- Red -->
+    <color name="colorIncome">#388E3C</color>           <!-- Green -->
 
-    <color name="rice_green">#4CAF50</color>
-    <color name="soil_brown">#8B4513</color>
-    <color name="rice_gold">#D4A017</color>
-    <color name="text_dark">#212121</color>
+    <color name="rice_green">#4CAF50</color>            <!-- Rice Green -->
+    <color name="soil_brown">#795548</color>            <!-- Soil Brown -->
+    <color name="rice_gold">#FFA000</color>             <!-- Rice Gold -->
+    <color name="text_dark">#212121</color>             <!-- Dark Text -->
 
     <color name="white_transparent">#CCFFFFFF</color>
 
     <!-- Green palette -->
     <!-- Primary color palette (Mint Green) -->
-    <color name="primary_color">#4CAF50</color>
-    <color name="primary_color_light">#80E27E</color>
-    <color name="primary_color_dark">#087F23</color>
+    <color name="primary_color">#2E7D32</color>         <!-- Deep Green -->
+    <color name="primary_color_light">#4CAF50</color>   <!-- Light Green -->
+    <color name="primary_color_dark">#1B5E20</color>    <!-- Dark Green -->
 
     <!-- Navigation colors -->
-    <color name="nav_inactive">#BDBDBD</color>
-    <color name="nav_active">#4CAF50</color>
-    <color name="nav_background">#FFFFFF</color>
+    <color name="nav_inactive">#9E9E9E</color>          <!-- Gray -->
+    <color name="nav_active">#2E7D32</color>            <!-- Green -->
+    <color name="nav_background">#FFFFFF</color>        <!-- White -->
 
-    <!-- Accent color (Teal) -->
-    <color name="accent_color">#00BFA5</color>
-    <color name="accent_color_light">#5DF2D6</color>
-    <color name="accent_color_dark">#008E76</color>
+    <!-- Accent color (Amber) -->
+    <color name="accent_color">#FFA000</color>          <!-- Amber -->
+    <color name="accent_color_light">#FFB74D</color>    <!-- Light Amber -->
+    <color name="accent_color_dark">#F57C00</color>     <!-- Dark Amber -->
 
     <!-- Background colors -->
-    <color name="background_color">#F5F7FA</color>
-    <color name="surface_color">#FFFFFF</color>
-    <color name="card_background">#FFFFFF</color>
+    <color name="background_color">#F5F5F5</color>      <!-- Light Gray -->
+    <color name="surface_color">#FFFFFF</color>         <!-- White -->
+    <color name="card_background">#FFFFFF</color>       <!-- White -->
 
     <!-- Text colors -->
-    <color name="text_primary">#212121</color>
-    <color name="text_secondary">#757575</color>
-    <color name="text_hint">#9E9E9E</color>
-    <color name="text_on_primary">#FFFFFF</color>
-    <color name="text_on_accent">#FFFFFF</color>
+    <color name="text_primary">#212121</color>          <!-- Dark Gray -->
+    <color name="text_secondary">#757575</color>        <!-- Medium Gray -->
+    <color name="text_hint">#9E9E9E</color>             <!-- Light Gray -->
+    <color name="text_on_primary">#FFFFFF</color>       <!-- White -->
+    <color name="text_on_accent">#FFFFFF</color>        <!-- White -->
 
-    <!-- Green palette (keeping for backward compatibility) -->
-    <color name="green_50">#F0F9F0</color>
-    <color name="green_100">#DCEDC8</color>
-    <color name="green_200">#C5E1A5</color>
-    <color name="green_300">#AED581</color>
-    <color name="green_400">#9CCC65</color>
-    <color name="green_500">#8BC34A</color>
-    <color name="green_600">#7CB342</color>
-    <color name="green_700">#689F38</color>
-    <color name="green_800">#558B2F</color>
-    <color name="green_900">#33691E</color>
+    <!-- Green palette -->
+    <color name="green_50">#E8F5E9</color>
+    <color name="green_100">#C8E6C9</color>
+    <color name="green_200">#A5D6A7</color>
+    <color name="green_300">#81C784</color>
+    <color name="green_400">#66BB6A</color>
+    <color name="green_500">#4CAF50</color>
+    <color name="green_600">#43A047</color>
+    <color name="green_700">#388E3C</color>
+    <color name="green_800">#2E7D32</color>
+    <color name="green_900">#1B5E20</color>
 
     <!-- Blue palette -->
     <color name="blue_50">#E3F2FD</color>
@@ -86,8 +87,22 @@
     <color name="gray_900">#212121</color>
 
     <!-- Yellow palette -->
-    <color name="yellow_500">#FFEB3B</color>
+    <color name="yellow_500">#FFA000</color>            <!-- Amber -->
 
     <!-- Red palette -->
-    <color name="red_500">#F44336</color>
+    <color name="red_500">#D32F2F</color>               <!-- Red -->
+
+    <!-- Secondary Colors -->
+    <color name="colorSecondary">#795548</color>        <!-- Brown -->
+    <color name="colorSecondaryDark">#5D4037</color>    <!-- Dark Brown -->
+    <color name="colorSecondaryLight">#A1887F</color>   <!-- Light Brown -->
+
+    <!-- Status Colors -->
+    <color name="success">#4CAF50</color>               <!-- Green -->
+    <color name="warning">#FFA000</color>               <!-- Amber -->
+    <color name="error">#D32F2F</color>                 <!-- Red -->
+    <color name="info">#2196F3</color>                  <!-- Blue -->
+
+    <!-- Common Colors -->
+    <color name="transparent">#00000000</color>
 </resources>

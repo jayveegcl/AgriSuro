@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -25,11 +27,12 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class LoginActivity extends AppCompatActivity {
 
-    TextInputEditText editTextEmail, editTextPassword;
-    Button buttonLogin;
-    FirebaseAuth mAuth;
-    ProgressBar progressBar;
-    TextView textView;
+    private TextInputEditText editTextEmail, editTextPassword;
+    private Button buttonLogin;
+    private FirebaseAuth mAuth;
+    private ProgressBar progressBar;
+    private TextView textView, forgotPassword;
+    private AlphaAnimation fadeIn = new AlphaAnimation(0.0f, 1.0f);
 
     @Override
     public void onStart() {
@@ -49,12 +52,57 @@ public class LoginActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_login);
 
+        // Initialize fade-in animation
+        fadeIn.setDuration(1000);
+        fadeIn.setFillAfter(true);
+
         mAuth = FirebaseAuth.getInstance();
         editTextEmail = findViewById(R.id.email);
         editTextPassword = findViewById(R.id.password);
         buttonLogin = findViewById(R.id.btn_login);
         progressBar = findViewById(R.id.progressBar);
-        textView = findViewById((R.id.registerNow));
+        textView = findViewById(R.id.registerNow);
+        forgotPassword = findViewById(R.id.forgot_password);
+
+        // Apply fade-in animation to views
+        findViewById(R.id.logo).startAnimation(fadeIn);
+        findViewById(R.id.welcome_text).startAnimation(fadeIn);
+        findViewById(R.id.login_subtitle).startAnimation(fadeIn);
+        findViewById(R.id.email_layout).startAnimation(fadeIn);
+        findViewById(R.id.password_layout).startAnimation(fadeIn);
+        buttonLogin.startAnimation(fadeIn);
+        textView.startAnimation(fadeIn);
+
+        // Set up forgot password click listener
+        forgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String email = String.valueOf(editTextEmail.getText());
+                if (TextUtils.isEmpty(email)) {
+                    Toast.makeText(LoginActivity.this, "Please enter your email address", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                progressBar.setVisibility(View.VISIBLE);
+                mAuth.sendPasswordResetEmail(email)
+                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                progressBar.setVisibility(View.GONE);
+                                if (task.isSuccessful()) {
+                                    Toast.makeText(LoginActivity.this,
+                                            "Password reset email sent. Please check your email.",
+                                            Toast.LENGTH_LONG).show();
+                                } else {
+                                    Toast.makeText(LoginActivity.this,
+                                            "Failed to send reset email. Please try again.",
+                                            Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+            }
+        });
+
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -74,11 +122,13 @@ public class LoginActivity extends AppCompatActivity {
 
                 if(TextUtils.isEmpty(email)){
                     Toast.makeText(LoginActivity.this, "Enter email", Toast.LENGTH_SHORT).show();
+                    progressBar.setVisibility(View.GONE);
                     return;
                 }
 
                 if(TextUtils.isEmpty(password)){
                     Toast.makeText(LoginActivity.this, "Enter password", Toast.LENGTH_SHORT).show();
+                    progressBar.setVisibility(View.GONE);
                     return;
                 }
 
@@ -96,7 +146,8 @@ public class LoginActivity extends AppCompatActivity {
                                     finish();
                                 } else {
                                     // If sign in fails, display a message to the user.
-                                    Toast.makeText(LoginActivity.this, "Authentication failed.",
+                                    Toast.makeText(LoginActivity.this, "Authentication failed: " +
+                                                    task.getException().getMessage(),
                                             Toast.LENGTH_SHORT).show();
                                 }
                             }
