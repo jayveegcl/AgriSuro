@@ -105,4 +105,8 @@
 
     <!-- Common Colors -->
     <color name="transparent">#00000000</color>
+    <color name="accent_green">#2E7D32</color>
+    <color name="light_green">#E8F5E9</color>
+    <color name="background_light">#F5F5F5</color>
+
 </resources>
