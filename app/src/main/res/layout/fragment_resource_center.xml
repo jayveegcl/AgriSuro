@@ -48,7 +48,7 @@
                     <ImageView
                         android:layout_width="56dp"
                         android:layout_height="56dp"
-                        android:src="@drawable/ic_plant"
+                        android:src="@drawable/ic_rice_variety"
                         android:contentDescription="Rice Variants Icon"
                         />
 
@@ -61,7 +61,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Rice Variants"
+                            android:text="Rice Varieties"
                             android:textSize="20sp"
                             android:textStyle="bold"
                             android:textColor="@color/text_dark" />
@@ -98,9 +98,8 @@
                     <ImageView
                         android:layout_width="56dp"
                         android:layout_height="56dp"
-                        android:src="@drawable/ic_plant"
-                        android:contentDescription="Rice Diseases Icon"
-                        app:tint="@color/rice_green" />
+                        android:src="@drawable/ic_rice_disease"
+                        android:contentDescription="Rice Diseases Icon" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -149,8 +148,7 @@
                         android:layout_width="56dp"
                         android:layout_height="56dp"
                         android:contentDescription="Rice Weeds Icon"
-                        android:src="@drawable/ic_plant"
-                        app:tint="@color/rice_green" />
+                        android:src="@drawable/ic_rice_weed" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -199,8 +197,7 @@
                         android:layout_width="56dp"
                         android:layout_height="56dp"
                         android:contentDescription="Rice Weeds Icon"
-                        android:src="@drawable/ic_plant"
-                        app:tint="@color/rice_green" />
+                        android:src="@drawable/ic_rice_insect" />
 
                     <LinearLayout
                         android:layout_width="match_parent"

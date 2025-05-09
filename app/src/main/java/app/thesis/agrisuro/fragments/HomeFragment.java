@@ -142,14 +142,14 @@ public class HomeFragment extends Fragment {
 
     private void navigateToDiseaseDetection() {
         // Navigate to disease detection fragment
-        Toast.makeText(getContext(), "Rice Disease Detection", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), "Rice Diseases", Toast.LENGTH_SHORT).show();
         // Implement navigation logic using Navigation Component
         // NavHostFragment.findNavController(this).navigate(R.id.action_homeFragment_to_diseaseDetectionFragment);
     }
 
     private void navigateToExpenseTracker() {
         // Navigate to market price fragment
-        Toast.makeText(getContext(), "Expense Tracker", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), "Crop Calendar", Toast.LENGTH_SHORT).show();
         // Implement navigation logic using Navigation Component
         // NavHostFragment.findNavController(this).navigate(R.id.action_homeFragment_to_expenseTrackerFragment);
         // Launch crop calendar activity
