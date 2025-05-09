@@ -12,8 +12,7 @@
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            >
+            android:layout_height="match_parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -349,6 +348,49 @@
                         android:padding="12dp"
                         android:nestedScrollingEnabled="false" />
                 </com.google.android.material.card.MaterialCardView>
+
+                <!-- 5-Day Forecast -->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/forecast_recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <!-- Planting Guide View -->
+                <LinearLayout
+                    android:id="@+id/planting_guide_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp"
+                    android:visibility="gone">
+
+                    <!-- Rice Planting Recommendations - Moved to appear after the forecast -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="12dp"
+                        android:layout_marginTop="16dp"
+                        android:drawableStart="@drawable/ic_calendar"
+                        android:drawablePadding="10dp"
+                        android:drawableTint="@color/rice_green"
+                        android:text="@string/planting_recommendations"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/text_dark" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recommendations_recycler_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:text="@string/recommendations_disclaimer"
+                        android:textColor="@color/gray_700"
+                        android:textSize="14sp" />
+                </LinearLayout>
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
@@ -364,45 +406,4 @@
         app:srcCompat="@drawable/ic_location"
         app:backgroundTint="@color/colorPrimary"
         app:tint="@color/white" />
-
-    <!-- 5-Day Forecast -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/forecast_recycler_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <!-- Planting Guide View -->
-    <LinearLayout
-        android:id="@+id/planting_guide_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp"
-        android:visibility="gone">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="12dp"
-            android:drawableStart="@drawable/ic_calendar"
-            android:drawablePadding="10dp"
-            android:drawableTint="@color/rice_green"
-            android:text="@string/planting_recommendations"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:textColor="@color/text_dark" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recommendations_recycler_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text="@string/recommendations_disclaimer"
-            android:textColor="@color/gray_700"
-            android:textSize="14sp" />
-    </LinearLayout>
 </androidx.cardview.widget.CardView>
