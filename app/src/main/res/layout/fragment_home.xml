@@ -21,6 +21,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:padding="16dp"
+                android:background="@color/green_400"
                 android:gravity="center_vertical">
 
                 <ImageView
@@ -36,7 +37,7 @@
                     android:layout_weight="1"
                     android:layout_marginStart="16dp"
                     android:text="@string/app_name"
-                    android:textColor="@color/colorPrimary"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="32sp"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -115,6 +116,7 @@
                         android:layout_height="match_parent"
                         android:orientation="vertical"
                         android:gravity="center"
+                        android:background="@color/green_400"
                         android:padding="16dp">
 
                         <ImageView
@@ -151,6 +153,7 @@
                         android:layout_height="match_parent"
                         android:orientation="vertical"
                         android:gravity="center"
+                        android:background="@color/green_400"
                         android:padding="16dp">
 
                         <ImageView
@@ -188,6 +191,7 @@
                         android:layout_height="match_parent"
                         android:orientation="vertical"
                         android:gravity="center"
+                        android:background="@color/green_400"
                         android:padding="16dp">
 
                         <ImageView
@@ -225,12 +229,13 @@
                         android:layout_height="match_parent"
                         android:orientation="vertical"
                         android:gravity="center"
+                        android:background="@color/green_400"
                         android:padding="16dp">
 
                         <ImageView
                             android:layout_width="48dp"
                             android:layout_height="48dp"
-                            android:src="@drawable/ic_plant"
+                            android:src="@drawable/calendar"
                             android:contentDescription="Market Price Icon" />
 
                         <TextView
