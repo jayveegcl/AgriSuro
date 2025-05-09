@@ -18,6 +18,7 @@ import app.thesis.agrisuro.R;
 import app.thesis.agrisuro.adapter.FeaturesAdapter;
 import app.thesis.agrisuro.adapter.NewsAdapter;
 import app.thesis.agrisuro.cropcalendar.CropPlannerActivity;
+import app.thesis.agrisuro.firebase.RiceDiseasesActivity;
 import app.thesis.agrisuro.models.Feature;
 import app.thesis.agrisuro.models.NewsItem;
 import com.google.android.material.card.MaterialCardView;
@@ -145,6 +146,8 @@ public class HomeFragment extends Fragment {
         Toast.makeText(getContext(), "Rice Diseases", Toast.LENGTH_SHORT).show();
         // Implement navigation logic using Navigation Component
         // NavHostFragment.findNavController(this).navigate(R.id.action_homeFragment_to_diseaseDetectionFragment);
+        Intent intent = new Intent(getActivity(), RiceDiseasesActivity.class);
+        startActivity(intent);
     }
 
     private void navigateToExpenseTracker() {
