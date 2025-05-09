@@ -114,7 +114,7 @@ public class CropPlannerActivity extends AppCompatActivity {
     }
 
     private void updateStartDate(Date startDate) {
-        textViewStartDate.setText("Start Date: " + dateFormat.format(startDate));
+        textViewStartDate.setText("Planting Date: " + dateFormat.format(startDate));
         // Save the selected date
         preferencesManager.saveStartDate(startDate.getTime());
         generateTaskPhases(startDate);
