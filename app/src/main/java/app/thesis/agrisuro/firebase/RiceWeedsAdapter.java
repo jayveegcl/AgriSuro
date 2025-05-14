@@ -34,10 +34,8 @@ public class RiceWeedsAdapter extends RecyclerView.Adapter<RiceWeedsAdapter.View
             name = itemView.findViewById(R.id.rice1);
             Local_name = itemView.findViewById(R.id.rice2);
             Development = itemView.findViewById(R.id.rice3);
-            EPPO_code = itemView.findViewById(R.id.rice4);
-            Family = itemView.findViewById(R.id.rice5);
-            Cultivated = itemView.findViewById(R.id.rice6);
-            Propagation = itemView.findViewById(R.id.rice7);
+            Propagation = itemView.findViewById(R.id.rice4);
+            Cultivated = itemView.findViewById(R.id.rice5);
             riceImage = itemView.findViewById(R.id.riceImage);
         }
     }
@@ -55,12 +53,10 @@ public class RiceWeedsAdapter extends RecyclerView.Adapter<RiceWeedsAdapter.View
         RiceWeeds variant = pair.second;
 
         holder.name.setText(pair.first);
-        holder.Local_name.setText("Local Name: " + variant.Local_name);
-        holder.Cultivated.setText("Cultivated: " + variant.Cultivated);
-        holder.Development.setText("Development: " + variant.Development);
-        holder.EPPO_code.setText("EPPO Code: " + variant.EPPO_code);
-        holder.Family.setText("Family: " + variant.Family);
-        holder.Propagation.setText("Propagation: " + variant.Propagation);
+        holder.Local_name.setText("\uD83C\uDFF7\uFE0F Local Name: " + variant.Local_name);
+        holder.Cultivated.setText("\uD83C\uDF3C Cultivated: " + variant.Cultivated);
+        holder.Development.setText("\uD83C\uDF3E Development: " + variant.Development);
+        holder.Propagation.setText("\uD83D\uDD01 Propagation: " + variant.Propagation);
 
         // Load image from Firebase Storage using Glide
         if (variant.imagePath != null && !variant.imagePath.isEmpty()) {

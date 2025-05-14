@@ -53,10 +53,10 @@ public class RiceInsectsAdapter extends RecyclerView.Adapter<RiceInsectsAdapter.
         RiceInsects variant = pair.second;
 
         holder.name.setText(pair.first);
-        holder.Tagalog_name.setText("Tagalog Name: " + variant.Tagalog_name);
-        holder.Damage.setText("Damage: " + variant.Damage);
-        holder.Identifiying_Marks.setText("Identifying Marks: " + variant.Identifiying_Marks);
-        holder.Location.setText("Location: " + variant.Location);
+        holder.Tagalog_name.setText(" \uD83C\uDFF7\uFE0FLocal Name: " + variant.Tagalog_name);
+        holder.Damage.setText("❌ Damage: " + variant.Damage);
+        holder.Identifiying_Marks.setText("\uD83D\uDD0D Identifying Marks: " + variant.Identifiying_Marks);
+        holder.Location.setText("\uD83D\uDCCD Location: " + variant.Location);
 
         // Load image from Firebase Storage using Glide
         if (variant.imagePath != null && !variant.imagePath.isEmpty()) {

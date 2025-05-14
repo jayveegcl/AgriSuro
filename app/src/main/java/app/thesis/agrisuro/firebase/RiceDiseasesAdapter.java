@@ -52,10 +52,10 @@ public class RiceDiseasesAdapter extends RecyclerView.Adapter<RiceDiseasesAdapte
         RiceDiseases variant = pair.second;
 
         holder.name.setText(pair.first);
-        holder.Local_name.setText("Local Name: " + variant.Local_name);
-        holder.Disease_Management.setText("Disease Management: " + variant.Disease_Management);
-        holder.Factors.setText("Factors: " + variant.Factors + " days");
-        holder.Symptoms.setText("Symptoms: " + variant.Symptoms);
+        holder.Local_name.setText("\uD83C\uDFF7\uFE0F Local Name: " + variant.Local_name);
+        holder.Disease_Management.setText("\uD83D\uDC8A Disease Management: " + variant.Disease_Management);
+        holder.Factors.setText("⚠\uFE0F Factors: " + variant.Factors + " days");
+        holder.Symptoms.setText("\uD83E\uDD12 Symptoms: " + variant.Symptoms);
 
         // Load image from Firebase Storage using Glide
         if (variant.imagePath != null && !variant.imagePath.isEmpty()) {

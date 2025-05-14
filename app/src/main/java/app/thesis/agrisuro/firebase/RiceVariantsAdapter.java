@@ -32,12 +32,14 @@ public class RiceVariantsAdapter extends RecyclerView.Adapter<RiceVariantsAdapte
         public ViewHolder(View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.rice1);
-            Average_Yield = itemView.findViewById(R.id.rice2);
-            Environment = itemView.findViewById(R.id.rice3);
-            Height = itemView.findViewById(R.id.rice4);
-            Maturity = itemView.findViewById(R.id.rice5);
-            Maximum_Yield = itemView.findViewById(R.id.rice6);
-            Season = itemView.findViewById(R.id.rice7);
+
+            Environment = itemView.findViewById(R.id.rice2);
+            Season = itemView.findViewById(R.id.rice3);
+            Maturity = itemView.findViewById(R.id.rice4);
+            Height = itemView.findViewById(R.id.rice5);
+            Average_Yield = itemView.findViewById(R.id.rice6);
+            Maximum_Yield = itemView.findViewById(R.id.rice7);
+
             riceImage = itemView.findViewById(R.id.riceImage);
         }
     }
@@ -55,12 +57,12 @@ public class RiceVariantsAdapter extends RecyclerView.Adapter<RiceVariantsAdapte
         RiceVariants variant = pair.second;
 
         holder.name.setText(pair.first);
-        holder.Average_Yield.setText("Average Yield: " + variant.Average_Yield);
-        holder.Environment.setText("Environment: " + variant.Environment);
-        holder.Height.setText("Height: " + variant.Height);
-        holder.Maturity.setText("Maturity: " + variant.Maturity);
-        holder.Maximum_Yield.setText("Maximum Yield: " + variant.Maximum_Yield);
-        holder.Season.setText("Season: " + variant.Season);
+        holder.Average_Yield.setText("\uD83C\uDF3E Average Yield: " + variant.Average_Yield);
+        holder.Environment.setText("\uD83C\uDF0D Environment: " + variant.Environment);
+        holder.Height.setText("\uD83D\uDCCF Height: " + variant.Height);
+        holder.Maturity.setText("⏳ Maturity: " + variant.Maturity);
+        holder.Maximum_Yield.setText("\uD83D\uDCC8 Maximum Yield: " + variant.Maximum_Yield);
+        holder.Season.setText("☀\uFE0F Season: " + variant.Season);
 
         // Load image from Firebase Storage using Glide
         if (variant.imagePath != null && !variant.imagePath.isEmpty()) {

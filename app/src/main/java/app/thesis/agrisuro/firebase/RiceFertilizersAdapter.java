@@ -26,16 +26,18 @@ public class RiceFertilizersAdapter extends RecyclerView.Adapter<RiceFertilizers
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView name, Common_name, Fertilizer, Per_hectare, Purpose;
+        TextView name, Common_name, Fertilizer, Per_hectare, Purpose, Type, Application;
         ImageView riceImage;
 
         public ViewHolder(View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.rice1);
             Common_name = itemView.findViewById(R.id.rice2);
-            Fertilizer = itemView.findViewById(R.id.rice3);
+            Purpose = itemView.findViewById(R.id.rice3);
             Per_hectare = itemView.findViewById(R.id.rice4);
-            Purpose = itemView.findViewById(R.id.rice5);
+            Type = itemView.findViewById(R.id.rice5);
+            Fertilizer = itemView.findViewById(R.id.rice6);
+            Application = itemView.findViewById(R.id.rice7);
             riceImage = itemView.findViewById(R.id.riceImage);
         }
     }
@@ -53,10 +55,12 @@ public class RiceFertilizersAdapter extends RecyclerView.Adapter<RiceFertilizers
         RiceFertilizers variant = pair.second;
 
         holder.name.setText(pair.first);
-        holder.Common_name.setText("Common Name: " + variant.Common_name);
-        holder.Fertilizer.setText("Fertilizer: " + variant.Fertilizer);
-        holder.Per_hectare.setText("Per Hectare: " + variant.Per_hectare);
-        holder.Purpose.setText("Purpose: " + variant.Purpose);
+        holder.Common_name.setText("\uD83C\uDFF7\uFE0F Karaniwang Pangalan: " + variant.Common_name);
+        holder.Fertilizer.setText("\uD83E\uDDEA Laman na Sustansya: " + variant.Fertilizer);
+        holder.Per_hectare.setText("\uD83D\uDCCF Dami Kada Ektarya: " + variant.Per_hectare);
+        holder.Purpose.setText("\uD83C\uDFAF Layunin o Gamit: " + variant.Purpose);
+        holder.Type.setText("\uD83E\uDDC2 Uri ng Abono: " + variant.Type);
+        holder.Application.setText("\uD83C\uDF31 Paraan ng Paglalagay: " + variant.Application);
 
         // Load image from Firebase Storage using Glide
         if (variant.imagePath != null && !variant.imagePath.isEmpty()) {

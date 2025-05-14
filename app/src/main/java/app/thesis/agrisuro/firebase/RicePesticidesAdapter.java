@@ -33,9 +33,9 @@ public class RicePesticidesAdapter extends RecyclerView.Adapter<RicePesticidesAd
             super(itemView);
             name = itemView.findViewById(R.id.rice1);
             Tagalog = itemView.findViewById(R.id.rice2);
-            Ingredient = itemView.findViewById(R.id.rice3);
+            Use = itemView.findViewById(R.id.rice3);
             Type = itemView.findViewById(R.id.rice4);
-            Use = itemView.findViewById(R.id.rice5);
+            Ingredient = itemView.findViewById(R.id.rice5);
             riceImage = itemView.findViewById(R.id.riceImage);
         }
     }
@@ -53,10 +53,10 @@ public class RicePesticidesAdapter extends RecyclerView.Adapter<RicePesticidesAd
         RicePesticides variant = pair.second;
 
         holder.name.setText(pair.first);
-        holder.Tagalog.setText("Tagalog: " + variant.Tagalog);
-        holder.Type.setText("Type: " + variant.Type);
-        holder.Ingredient.setText("Ingredient: " + variant.Ingredient);
-        holder.Use.setText("Use: " + variant.Use);
+        holder.Tagalog.setText("\uD83C\uDFF7\uFE0F Local Name: " + variant.Tagalog);
+        holder.Type.setText("\uD83E\uDDEA Type: " + variant.Type);
+        holder.Ingredient.setText("⚗\uFE0F Ingredient: " + variant.Ingredient);
+        holder.Use.setText("\uD83C\uDFAF Use: " + variant.Use);
 
         // Load image from Firebase Storage using Glide
         if (variant.imagePath != null && !variant.imagePath.isEmpty()) {
