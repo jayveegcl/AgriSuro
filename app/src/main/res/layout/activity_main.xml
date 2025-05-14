@@ -29,7 +29,7 @@
         android:paddingTop="8dp"
         android:paddingBottom="8dp"
         app:itemIconSize="20dp"
-        app:itemRippleColor="@color/accent_color_light"
+        app:itemRippleColor="@color/colorPrimaryLight"
         app:itemTextColor="@drawable/bottom_nav_item_color"
         app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
