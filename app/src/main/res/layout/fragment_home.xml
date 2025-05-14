@@ -122,14 +122,14 @@
                         <ImageView
                             android:layout_width="48dp"
                             android:layout_height="48dp"
-                            android:src="@drawable/ic_weather"
+                            android:src="@drawable/ic_rice_variety"
                             android:contentDescription="Weather Icon" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
-                            android:text="@string/weather_forecast"
+                            android:text="Rice Varieties"
                             android:textSize="16dp"
                             android:textColor="@color/text_dark"
                             android:textStyle="bold" />
@@ -160,14 +160,14 @@
                         <ImageView
                             android:layout_width="48dp"
                             android:layout_height="48dp"
-                            android:src="@drawable/ic_rice_variety"
+                            android:src="@drawable/ic_rice_disease"
                             android:contentDescription="Crop Guide Icon" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
-                            android:text="Planting Guide"
+                            android:text="Rice Diseases"
                             android:textColor="@color/text_dark"
                             android:textSize="16sp"
                             android:textStyle="bold" />
@@ -198,14 +198,14 @@
                         <ImageView
                             android:layout_width="48dp"
                             android:layout_height="48dp"
-                            android:src="@drawable/ic_rice_disease"
+                            android:src="@drawable/ic_fertilizer"
                             android:contentDescription="Disease Detection Icon" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
-                            android:text="Rice Diseases"
+                            android:text="Fertilizers"
                             android:textSize="16sp"
                             android:textColor="@color/text_dark"
                             android:textStyle="bold" />

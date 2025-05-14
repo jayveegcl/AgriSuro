@@ -11,6 +11,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -19,6 +20,8 @@ import app.thesis.agrisuro.adapter.FeaturesAdapter;
 import app.thesis.agrisuro.adapter.NewsAdapter;
 import app.thesis.agrisuro.cropcalendar.CropPlannerActivity;
 import app.thesis.agrisuro.firebase.RiceDiseasesActivity;
+import app.thesis.agrisuro.firebase.RiceFertilizersActivity;
+import app.thesis.agrisuro.firebase.RiceVariantsActivity;
 import app.thesis.agrisuro.models.Feature;
 import app.thesis.agrisuro.models.NewsItem;
 import com.google.android.material.card.MaterialCardView;
@@ -88,17 +91,28 @@ public class HomeFragment extends Fragment {
     private void setupNewsRecyclerView() {
         newsRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        // Create sample news items
+        // Create sample news items with URLs
         List<NewsItem> newsItems = new ArrayList<>();
-        newsItems.add(new NewsItem("New Rice Variety Released",
-                "A new drought-resistant rice variety has been released that can increase yields by 15%",
-                "2025-05-01", R.drawable.ic_plant));
-        newsItems.add(new NewsItem("Farming Subsidy Program Announced",
-                "The government has announced a new subsidy program for rice farmers",
-                "2025-04-28", R.drawable.ic_circle));
-        newsItems.add(new NewsItem("Climate Change Impact on Rice Production",
-                "New study reveals how climate change is affecting rice production in Southeast Asia",
-                "2025-04-25", R.drawable.ic_add));
+        newsItems.add(new NewsItem(
+                "Philippine government resumes P20/kilo rice project in Cebu",
+                "The National Food Authority (NFA) has started delivering well-milled rice to Cebu province in preparation for the resumption of the government’s sale of P20 per kilogram rice project through the Department of Agriculture (DA).",
+                "2025-05-14",
+                R.drawable.inquirer,
+                "https://business.inquirer.net/525216/govt-resumes-p20-kilo-rice-project-in-cebu")); // Sample IRRI URL
+
+        newsItems.add(new NewsItem(
+                "PhilRice ramps up zinc-rich rice production",
+                "PhilRice Negros plants zinc-rich rice varieties NSIC Rc 460 and NSIC Rc 648 to boost seed supply for the Visayas.",
+                "2025-05-07",
+                R.drawable.philrice,
+                "https://www.philrice.gov.ph/philrice-ramps-up-zinc-rich-rice-production/")); // Sample Department of Agriculture URL
+
+        newsItems.add(new NewsItem(
+                "NIA and IRRI promote investment-targeting solutions for sustainable rice and water management in PH",
+                "The National Irrigation Administration (NIA) and the International Rice Research Institute (IRRI) signed a Memorandum of Agreement to implement digital innovations for increasing rice yields, optimizing water management, and reducing greenhouse gas emissions in the Philippine rice sector.",
+                "2025-04-22",
+                R.drawable.irri,
+                "https://www.irri.org/news-and-events/news/nia-and-irri-promote-investment-targeting-solutions-sustainable-rice-and-water")); // Sample PhilRice news URL
 
         // Set adapter
         newsAdapter = new NewsAdapter(newsItems);
@@ -129,33 +143,28 @@ public class HomeFragment extends Fragment {
 
     private void navigateToWeatherForecast() {
         // Navigate to weather forecast fragment
-        Toast.makeText(getContext(), "Weather Forecast", Toast.LENGTH_SHORT).show();
-        // Implement navigation logic using Navigation Component
-        // NavHostFragment.findNavController(this).navigate(R.id.action_homeFragment_to_weatherFragment);
+        Toast.makeText(getContext(), "Rice Varieties", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(getActivity(), RiceVariantsActivity.class);
+        startActivity(intent);
     }
 
     private void navigateToCropGuide() {
         // Navigate to crop guide fragment
-        Toast.makeText(getContext(), "Planting Guide", Toast.LENGTH_SHORT).show();
-        // Implement navigation logic using Navigation Component
-        // NavHostFragment.findNavController(this).navigate(R.id.action_homeFragment_to_cropGuideFragment);
+        Toast.makeText(getContext(), "Rice Diseases", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(getActivity(), RiceDiseasesActivity.class);
+        startActivity(intent);
     }
 
     private void navigateToDiseaseDetection() {
         // Navigate to disease detection fragment
-        Toast.makeText(getContext(), "Rice Diseases", Toast.LENGTH_SHORT).show();
-        // Implement navigation logic using Navigation Component
-        // NavHostFragment.findNavController(this).navigate(R.id.action_homeFragment_to_diseaseDetectionFragment);
-        Intent intent = new Intent(getActivity(), RiceDiseasesActivity.class);
+        Toast.makeText(getContext(), "Fertilizers", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(getActivity(), RiceFertilizersActivity.class);
         startActivity(intent);
     }
 
     private void navigateToExpenseTracker() {
         // Navigate to market price fragment
         Toast.makeText(getContext(), "Crop Calendar", Toast.LENGTH_SHORT).show();
-        // Implement navigation logic using Navigation Component
-        // NavHostFragment.findNavController(this).navigate(R.id.action_homeFragment_to_expenseTrackerFragment);
-        // Launch crop calendar activity
         Intent intent = new Intent(getActivity(), CropPlannerActivity.class);
         startActivity(intent);
     }
