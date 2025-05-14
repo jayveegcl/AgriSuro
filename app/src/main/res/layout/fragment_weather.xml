@@ -404,6 +404,6 @@
         android:layout_margin="20dp"
         android:contentDescription="Update Location"
         app:srcCompat="@drawable/ic_location"
-        app:backgroundTint="@color/colorPrimary"
+        app:backgroundTint="@color/accent_color"
         app:tint="@color/white" />
 </androidx.cardview.widget.CardView>

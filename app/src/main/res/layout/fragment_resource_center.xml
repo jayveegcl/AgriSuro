@@ -333,6 +333,6 @@
         android:layout_margin="20dp"
         android:contentDescription="Help Button"
         android:src="@drawable/ic_help"
-        app:backgroundTint="@color/rice_gold"
+        app:backgroundTint="@color/accent_color"
         app:tint="@color/white" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

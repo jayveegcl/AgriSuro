@@ -77,6 +77,7 @@
         android:layout_height="wrap_content"
         android:text="Select Date"
         android:drawableStart="@drawable/ic_calendar"
+        android:textColor="@color/colorPrimary"
         android:drawablePadding="8dp"
         android:layout_marginBottom="16dp" />
 
@@ -85,7 +86,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Save"
-        android:backgroundTint="@color/colorPrimaryDark"
+        android:backgroundTint="@color/accent_color"
         android:drawablePadding="8dp" />
 
 </LinearLayout>
