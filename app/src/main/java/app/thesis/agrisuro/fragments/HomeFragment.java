@@ -95,7 +95,7 @@ public class HomeFragment extends Fragment {
         List<NewsItem> newsItems = new ArrayList<>();
         newsItems.add(new NewsItem(
                 "Philippine government resumes P20/kilo rice project in Cebu",
-                "The National Food Authority (NFA) has started delivering well-milled rice to Cebu province in preparation for the resumption of the government’s sale of P20 per kilogram rice project through the Department of Agriculture (DA).",
+                "The NFA has started delivering well-milled rice to Cebu province in preparation for the resumption of the government’s sale of P20 per kilogram rice project through the Department of Agriculture (DA).",
                 "2025-05-14",
                 R.drawable.inquirer,
                 "https://business.inquirer.net/525216/govt-resumes-p20-kilo-rice-project-in-cebu")); // Sample IRRI URL
@@ -109,10 +109,31 @@ public class HomeFragment extends Fragment {
 
         newsItems.add(new NewsItem(
                 "NIA and IRRI promote investment-targeting solutions for sustainable rice and water management in PH",
-                "The National Irrigation Administration (NIA) and the International Rice Research Institute (IRRI) signed a Memorandum of Agreement to implement digital innovations for increasing rice yields, optimizing water management, and reducing greenhouse gas emissions in the Philippine rice sector.",
+                "NIA and IRRI signed a Memorandum of Agreement to implement digital innovations for increasing rice yields, optimizing water management, and reducing greenhouse gas emissions in the Philippine rice sector.",
                 "2025-04-22",
                 R.drawable.irri,
                 "https://www.irri.org/news-and-events/news/nia-and-irri-promote-investment-targeting-solutions-sustainable-rice-and-water")); // Sample PhilRice news URL
+
+        newsItems.add(new NewsItem(
+                "Rice Import Delays",
+                "Philippine rice importers postponed 350,000 metric tons of Vietnamese rice shipments to renegotiate prices after global market declines.",
+                "2025-02-07",
+                R.drawable.reuters,
+                "https://www.reuters.com/markets/commodities/philippine-rice-buyers-delay-350000-tons-vietnamese-cargoes-sources-2025-02-07/"));
+
+        newsItems.add(new NewsItem(
+                "DA Record Harvest Target",
+                "The Department of Agriculture aims for a record 20.46 million metric tons of rice production in 2025, backed by early RCEF funding.",
+                "2025-01-20",
+                R.drawable.da,
+                "https://www.philstar.com/business/2025/01/20/2415593/da-eyes-record-high-2046mmt-rice-harvest-rcef")); // Sample PhilRice news URL
+
+        newsItems.add(new NewsItem(
+                "Kalinga's Contract Farming",
+                "The government plans to expand contract rice farming in Kalinga to supply low-cost rice to vulnerable communities.",
+                "2024-11-27",
+                R.drawable.baguio_chronicle,
+                "https://thebaguiochronicle.com/2024/11/27/kalinga-looks-to-triple-cheap-contract-rice-production-in-2025/"));
 
         // Set adapter
         newsAdapter = new NewsAdapter(newsItems);
