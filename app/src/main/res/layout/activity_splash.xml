@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:backgroundTint="@color/white"
-    android:background="@drawable/button_background">
+    android:background="@drawable/button_background"
+    android:backgroundTint="@color/white">
 
 
     <ImageView
         android:id="@+id/splash_logo"
         android:layout_width="317dp"
-        android:layout_height="416dp"
+        android:layout_height="317dp"
         android:contentDescription="@string/app_logo_description"
         android:src="@drawable/logo"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -21,16 +21,18 @@
         app:layout_constraintVertical_bias="0.39" />
 
     <TextView
-        android:layout_width="207dp"
-        android:layout_height="69dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="182dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="486dp"
+        android:layout_marginBottom="180dp"
+        android:fontFamily="@font/merriweather_bold"
         android:text="@string/app_name"
-        android:textColor="@color/black"
+        android:textColor="@color/colorPrimaryDark"
         android:textSize="40dp"
-        android:textAppearance="@font/nunito_sans"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.598"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/splash_logo" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

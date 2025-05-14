@@ -21,7 +21,9 @@ import app.thesis.agrisuro.adapter.NewsAdapter;
 import app.thesis.agrisuro.cropcalendar.CropPlannerActivity;
 import app.thesis.agrisuro.firebase.RiceDiseasesActivity;
 import app.thesis.agrisuro.firebase.RiceFertilizersActivity;
+import app.thesis.agrisuro.firebase.RicePesticidesActivity;
 import app.thesis.agrisuro.firebase.RiceVariantsActivity;
+import app.thesis.agrisuro.firebase.RiceInsectsActivity;
 import app.thesis.agrisuro.models.Feature;
 import app.thesis.agrisuro.models.NewsItem;
 import com.google.android.material.card.MaterialCardView;
@@ -36,6 +38,7 @@ public class HomeFragment extends Fragment {
     private FeaturesAdapter featuresAdapter;
     private NewsAdapter newsAdapter;
     private MaterialCardView weatherCard, cropGuideCard, diseaseDetectionCard, marketPriceCard;
+    private MaterialCardView pestManagementCard, marketPricesCard; // New card views
     private TextView versionInfoText;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -49,6 +52,8 @@ public class HomeFragment extends Fragment {
         cropGuideCard = root.findViewById(R.id.crop_guide_card);
         diseaseDetectionCard = root.findViewById(R.id.disease_detection_card);
         marketPriceCard = root.findViewById(R.id.market_price_card);
+        pestManagementCard = root.findViewById(R.id.pest_management_card); // Initialize new card
+        marketPricesCard = root.findViewById(R.id.market_prices_card); // Initialize new card
         versionInfoText = root.findViewById(R.id.version_info);
 
         // Set up features recycler view
@@ -95,7 +100,7 @@ public class HomeFragment extends Fragment {
         List<NewsItem> newsItems = new ArrayList<>();
         newsItems.add(new NewsItem(
                 "Philippine government resumes P20/kilo rice project in Cebu",
-                "The NFA has started delivering well-milled rice to Cebu province in preparation for the resumption of the government’s sale of P20 per kilogram rice project through the Department of Agriculture (DA).",
+                "The NFA has started delivering well-milled rice to Cebu province in preparation for the resumption of the government's sale of P20 per kilogram rice project through the Department of Agriculture (DA).",
                 "2025-05-14",
                 R.drawable.inquirer,
                 "https://business.inquirer.net/525216/govt-resumes-p20-kilo-rice-project-in-cebu")); // Sample IRRI URL
@@ -141,50 +146,74 @@ public class HomeFragment extends Fragment {
     }
 
     private void setupCardClickListeners() {
-        // Weather forecast card click listener
+        // Weather forecast card click listener (Rice Varieties)
         weatherCard.setOnClickListener(v -> {
             navigateToWeatherForecast();
         });
 
-        // Crop guide card click listener
+        // Crop guide card click listener (Rice Diseases)
         cropGuideCard.setOnClickListener(v -> {
             navigateToCropGuide();
         });
 
-        // Disease detection card click listener
+        // Disease detection card click listener (Fertilizers)
         diseaseDetectionCard.setOnClickListener(v -> {
             navigateToDiseaseDetection();
         });
 
-        // Market price card click listener
+        // Market price card click listener (Crop Calendar)
         marketPriceCard.setOnClickListener(v -> {
             navigateToExpenseTracker();
+        });
+
+        // Pest Management card click listener
+        pestManagementCard.setOnClickListener(v -> {
+            navigateToPestManagement();
+        });
+
+        // Market Prices card click listener
+        marketPricesCard.setOnClickListener(v -> {
+            navigateToMarketPrices();
         });
     }
 
     private void navigateToWeatherForecast() {
-        // Navigate to weather forecast fragment
+        // Navigate to Rice Varieties activity
         Toast.makeText(getContext(), "Rice Varieties", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(getActivity(), RiceVariantsActivity.class);
         startActivity(intent);
     }
 
     private void navigateToCropGuide() {
-        // Navigate to crop guide fragment
+        // Navigate to Rice Diseases activity
         Toast.makeText(getContext(), "Rice Diseases", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(getActivity(), RiceDiseasesActivity.class);
         startActivity(intent);
     }
 
     private void navigateToDiseaseDetection() {
-        // Navigate to disease detection fragment
+        // Navigate to Fertilizers activity
+        Toast.makeText(getContext(), "Rice Insects", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(getActivity(), RiceInsectsActivity.class);
+        startActivity(intent);
+    }
+
+    private void navigateToExpenseTracker() {
+        // Navigate to Crop Calendar activity
+        Toast.makeText(getContext(), "Pesticides", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(getActivity(), RicePesticidesActivity.class);
+        startActivity(intent);
+    }
+
+    private void navigateToPestManagement() {
+        // Navigate to Pest Management activity
         Toast.makeText(getContext(), "Fertilizers", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(getActivity(), RiceFertilizersActivity.class);
         startActivity(intent);
     }
 
-    private void navigateToExpenseTracker() {
-        // Navigate to market price fragment
+    private void navigateToMarketPrices() {
+        // Navigate to Market Prices activity
         Toast.makeText(getContext(), "Crop Calendar", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(getActivity(), CropPlannerActivity.class);
         startActivity(intent);
