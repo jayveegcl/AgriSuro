@@ -32,11 +32,11 @@ public class RiceWeedsAdapter extends RecyclerView.Adapter<RiceWeedsAdapter.View
         public ViewHolder(View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.rice1);
-            Cultivated = itemView.findViewById(R.id.rice2);
+            Local_name = itemView.findViewById(R.id.rice2);
             Development = itemView.findViewById(R.id.rice3);
             EPPO_code = itemView.findViewById(R.id.rice4);
             Family = itemView.findViewById(R.id.rice5);
-            Local_name = itemView.findViewById(R.id.rice6);
+            Cultivated = itemView.findViewById(R.id.rice6);
             Propagation = itemView.findViewById(R.id.rice7);
             riceImage = itemView.findViewById(R.id.riceImage);
         }
@@ -55,11 +55,11 @@ public class RiceWeedsAdapter extends RecyclerView.Adapter<RiceWeedsAdapter.View
         RiceWeeds variant = pair.second;
 
         holder.name.setText(pair.first);
+        holder.Local_name.setText("Local Name: " + variant.Local_name);
         holder.Cultivated.setText("Cultivated: " + variant.Cultivated);
         holder.Development.setText("Development: " + variant.Development);
         holder.EPPO_code.setText("EPPO Code: " + variant.EPPO_code);
         holder.Family.setText("Family: " + variant.Family);
-        holder.Local_name.setText("Local Name: " + variant.Local_name);
         holder.Propagation.setText("Propagation: " + variant.Propagation);
 
         // Load image from Firebase Storage using Glide

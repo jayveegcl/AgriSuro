@@ -31,10 +31,10 @@ public class RiceDiseasesAdapter extends RecyclerView.Adapter<RiceDiseasesAdapte
         public ViewHolder(View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.rice1);
-            Disease_Management = itemView.findViewById(R.id.rice2);
-            Factors = itemView.findViewById(R.id.rice3);
-            Local_name = itemView.findViewById(R.id.rice4);
-            Symptoms = itemView.findViewById(R.id.rice5);
+            Local_name = itemView.findViewById(R.id.rice2);
+            Symptoms = itemView.findViewById(R.id.rice3);
+            Factors = itemView.findViewById(R.id.rice4);
+            Disease_Management = itemView.findViewById(R.id.rice5);
             riceImage = itemView.findViewById(R.id.riceImage);
         }
     }
@@ -52,9 +52,9 @@ public class RiceDiseasesAdapter extends RecyclerView.Adapter<RiceDiseasesAdapte
         RiceDiseases variant = pair.second;
 
         holder.name.setText(pair.first);
+        holder.Local_name.setText("Local Name: " + variant.Local_name);
         holder.Disease_Management.setText("Disease Management: " + variant.Disease_Management);
         holder.Factors.setText("Factors: " + variant.Factors + " days");
-        holder.Local_name.setText("Local Name: " + variant.Local_name);
         holder.Symptoms.setText("Symptoms: " + variant.Symptoms);
 
         // Load image from Firebase Storage using Glide

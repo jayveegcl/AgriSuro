@@ -32,10 +32,10 @@ public class RiceInsectsAdapter extends RecyclerView.Adapter<RiceInsectsAdapter.
         public ViewHolder(View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.rice1);
-            Damage = itemView.findViewById(R.id.rice2);
+            Tagalog_name = itemView.findViewById(R.id.rice2);
             Identifiying_Marks = itemView.findViewById(R.id.rice3);
             Location = itemView.findViewById(R.id.rice4);
-            Tagalog_name = itemView.findViewById(R.id.rice5);
+            Damage = itemView.findViewById(R.id.rice5);
             riceImage = itemView.findViewById(R.id.riceImage);
         }
     }
@@ -53,10 +53,10 @@ public class RiceInsectsAdapter extends RecyclerView.Adapter<RiceInsectsAdapter.
         RiceInsects variant = pair.second;
 
         holder.name.setText(pair.first);
+        holder.Tagalog_name.setText("Tagalog Name: " + variant.Tagalog_name);
         holder.Damage.setText("Damage: " + variant.Damage);
         holder.Identifiying_Marks.setText("Identifying Marks: " + variant.Identifiying_Marks);
         holder.Location.setText("Location: " + variant.Location);
-        holder.Tagalog_name.setText("Tagalog Name: " + variant.Tagalog_name);
 
         // Load image from Firebase Storage using Glide
         if (variant.imagePath != null && !variant.imagePath.isEmpty()) {
