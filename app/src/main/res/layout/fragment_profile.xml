@@ -53,6 +53,17 @@
         android:backgroundTint="@color/accent_color"
         android:layout_marginBottom="16dp" />
 
+    <!-- Adding References button -->
+    <Button
+        android:id="@+id/references_btn"
+        android:text="References &amp; Sources"
+        android:textAllCaps="false"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="@color/accent_color"
+        android:layout_marginBottom="16dp" />
+
     <!-- Original logout button -->
     <Button
         android:id="@+id/logout"
