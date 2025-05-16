@@ -91,10 +91,10 @@ public class ResourceCenterFragment extends Fragment {
     private void showHelpDialog() {
         new AlertDialog.Builder(requireContext())
                 .setTitle("Help Center")
-                .setMessage("This Resource Center provides information about rice cultivation, " +
-                        "including rice variants, common diseases, weed management, " +
-                        "recommended pesticides, and fertilizers. " +
-                        "Tap on any card to learn more about that topic.")
+                .setMessage("Ang Resource Center na ito ay nagbibigay ng impormasyon tungkol sa pagtatanim ng palay, " +
+                        "kabilang ang mga uri ng palay, karaniwang sakit, pamamahala ng mga damo, " +
+                        "inirerekumendang pestisidyo, at pataba. " +
+                        "Pindutin and anumang card para matuto pa tungkol sa pasang iyon")
                 .setPositiveButton("Got it", (dialog, which) -> dialog.dismiss())
                 .show();
     }
