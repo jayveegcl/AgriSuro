@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Warning text at the top -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="WARNING: This action is permanent and cannot be undone."
+        android:textColor="#F44336"
+        android:textStyle="bold"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Password confirmation field -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:hint="Enter your password to confirm">
+
+        <EditText
+            android:id="@+id/password_confirmation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Confirmation checkbox -->
+    <CheckBox
+        android:id="@+id/confirmation_checkbox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="I understand that by deleting my account, all my data will be permanently lost."
+        android:layout_marginBottom="16dp" />
+
+    <!-- Text entry confirmation -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Type 'DELETE MY ACCOUNT' in capitals to confirm:"
+        android:layout_marginBottom="8dp" />
+
+    <EditText
+        android:id="@+id/confirmation_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Type DELETE MY ACCOUNT"
+        android:inputType="textCapCharacters"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Buttons for cancel and delete -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/cancel_button"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
+            android:backgroundTint="#9E9E9E"
+            android:text="Cancel" />
+
+        <Button
+            android:id="@+id/delete_button"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:backgroundTint="#F44336"
+            android:text="Delete Account"
+            android:enabled="false" />
+    </LinearLayout>
+
+</LinearLayout>
