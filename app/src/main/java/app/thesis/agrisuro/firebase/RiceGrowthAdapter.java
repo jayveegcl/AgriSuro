@@ -26,13 +26,13 @@ public class RiceGrowthAdapter extends RecyclerView.Adapter<RiceGrowthAdapter.Vi
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView name, A, Tagalog;
+        TextView name, A, Tagalog_name;
         ImageView riceImage;
 
         public ViewHolder(View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.rice1);
-            Tagalog = itemView.findViewById(R.id.rice2);
+            Tagalog_name = itemView.findViewById(R.id.rice2);
             A = itemView.findViewById(R.id.rice3);
             riceImage = itemView.findViewById(R.id.riceImage);
         }
@@ -51,7 +51,7 @@ public class RiceGrowthAdapter extends RecyclerView.Adapter<RiceGrowthAdapter.Vi
         RiceGrowth variant = pair.second;
 
         holder.name.setText(pair.first);
-        holder.Tagalog.setText("\uD83C\uDFF7\uFE0F Tagalog: " + variant.Tagalog);
+        holder.Tagalog_name.setText("\uD83C\uDFF7\uFE0F Tagalog: " + variant.Tagalog_name);
         holder.A.setText("" + variant.A);
 
         // Load image from Firebase Storage using Glide
