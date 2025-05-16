@@ -27,6 +27,7 @@
                 android:layout_weight="1"
                 android:text="Expense Tracker"
                 android:textColor="@color/colorPrimary"
+                android:fontFamily="@font/merriweather_bold"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 android:layout_gravity="center_vertical" />

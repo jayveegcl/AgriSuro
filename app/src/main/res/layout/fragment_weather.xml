@@ -33,8 +33,10 @@
                         android:layout_weight="1"
                         android:background="@color/green_400"
                         android:padding="12dp"
+                        android:gravity="center"
                         android:text="@string/weather_forecast"
                         android:textColor="@color/black"
+                        android:fontFamily="@font/merriweather_bold"
                         android:textSize="28sp"
                         android:textStyle="bold" />
 
@@ -55,7 +57,7 @@
                     app:tabTextColor="@color/text_dark"
                     app:tabSelectedTextColor="@color/rice_green"
                     app:tabIndicatorColor="@color/rice_green"
-                    app:tabBackground="@color/background_light"
+                    app:tabBackground="@color/white"
                     app:tabTextAppearance="@style/TabTextStyle">
 
                     <com.google.android.material.tabs.TabItem
