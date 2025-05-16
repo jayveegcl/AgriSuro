@@ -193,7 +193,7 @@ public class HomeFragment extends Fragment {
 
     private void navigateToDiseaseDetection() {
         // Navigate to Fertilizers activity
-        Toast.makeText(getContext(), "Rice Insects", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), "Rice Pests", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(getActivity(), RiceInsectsActivity.class);
         startActivity(intent);
     }

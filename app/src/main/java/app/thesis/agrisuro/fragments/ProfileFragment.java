@@ -139,7 +139,7 @@ public class ProfileFragment extends Fragment {
                         "• OpenWeatherMap\n" +
                         "\n" +
                         "Images and icons:\n" +
-                        "• FlatIcon\n" +
+                        "• Flaticon\n" +
                         "• Material Design Icons\n\n" +
                         "For full details, please visit our website."
         );
