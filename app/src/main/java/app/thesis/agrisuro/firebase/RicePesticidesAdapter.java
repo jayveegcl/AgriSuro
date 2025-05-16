@@ -26,16 +26,18 @@ public class RicePesticidesAdapter extends RecyclerView.Adapter<RicePesticidesAd
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView name, Type, Ingredient, Tagalog, Use;
+        TextView name, Type, Ingredient, Tagalog, Use, Application, Precautions;
         ImageView riceImage;
 
         public ViewHolder(View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.rice1);
             Tagalog = itemView.findViewById(R.id.rice2);
-            Use = itemView.findViewById(R.id.rice3);
-            Type = itemView.findViewById(R.id.rice4);
-            Ingredient = itemView.findViewById(R.id.rice5);
+            Ingredient = itemView.findViewById(R.id.rice3);
+            Use = itemView.findViewById(R.id.rice4);
+            Type = itemView.findViewById(R.id.rice5);
+            Application = itemView.findViewById(R.id.rice6);
+            Precautions = itemView.findViewById(R.id.rice7);
             riceImage = itemView.findViewById(R.id.riceImage);
         }
     }
@@ -53,10 +55,12 @@ public class RicePesticidesAdapter extends RecyclerView.Adapter<RicePesticidesAd
         RicePesticides variant = pair.second;
 
         holder.name.setText(pair.first);
-        holder.Tagalog.setText("\uD83C\uDFF7\uFE0F Local Name: " + variant.Tagalog);
-        holder.Type.setText("\uD83E\uDDEA Type: " + variant.Type);
-        holder.Ingredient.setText("⚗\uFE0F Ingredient: " + variant.Ingredient);
-        holder.Use.setText("\uD83C\uDFAF Use: " + variant.Use);
+        holder.Tagalog.setText("\uD83C\uDFF7\uFE0F Karaniwang Pangalan: " + variant.Tagalog);
+        holder.Type.setText("\uD83E\uDDEA Uri: " + variant.Type);
+        holder.Ingredient.setText("⚗\uFE0F Aktibong Sangkap: " + variant.Ingredient);
+        holder.Application.setText("\uD83E\uDDF4 Paraan ng Paggamit: " + variant.Application);
+        holder.Use.setText("\uD83C\uDFAF Gamit: " + variant.Use);
+        holder.Precautions.setText("⚠\uFE0F Pag-iingat: " + variant.Precautions);
 
         // Load image from Firebase Storage using Glide
         if (variant.imagePath != null && !variant.imagePath.isEmpty()) {

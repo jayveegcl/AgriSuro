@@ -25,7 +25,7 @@ public class RiceDiseasesAdapter extends RecyclerView.Adapter<RiceDiseasesAdapte
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView name, Disease_Management, Factors, Local_name, Symptoms;
+        TextView name, Disease_Management, Factors, Local_name, Symptoms, Reco, Solution;
         ImageView riceImage;
 
         public ViewHolder(View itemView) {
@@ -34,7 +34,9 @@ public class RiceDiseasesAdapter extends RecyclerView.Adapter<RiceDiseasesAdapte
             Local_name = itemView.findViewById(R.id.rice2);
             Symptoms = itemView.findViewById(R.id.rice3);
             Factors = itemView.findViewById(R.id.rice4);
-            Disease_Management = itemView.findViewById(R.id.rice5);
+            Solution = itemView.findViewById(R.id.rice5);
+            Reco = itemView.findViewById(R.id.rice6);
+            Disease_Management = itemView.findViewById(R.id.rice7);
             riceImage = itemView.findViewById(R.id.riceImage);
         }
     }
@@ -52,10 +54,12 @@ public class RiceDiseasesAdapter extends RecyclerView.Adapter<RiceDiseasesAdapte
         RiceDiseases variant = pair.second;
 
         holder.name.setText(pair.first);
-        holder.Local_name.setText("\uD83C\uDFF7\uFE0F Local Name: " + variant.Local_name);
-        holder.Disease_Management.setText("\uD83D\uDC8A Disease Management: " + variant.Disease_Management);
-        holder.Factors.setText("⚠\uFE0F Factors: " + variant.Factors + " days");
-        holder.Symptoms.setText("\uD83E\uDD12 Symptoms: " + variant.Symptoms);
+        holder.Local_name.setText("\uD83C\uDFF7\uFE0F Karaniwang Pangalan: " + variant.Local_name);
+        holder.Disease_Management.setText("\uD83D\uDC8A Pamamahala ng Sakit: " + variant.Disease_Management);
+        holder.Factors.setText("⚠\uFE0F Sanhi: " + variant.Factors);
+        holder.Symptoms.setText("\uD83E\uDD12 Sintomas: " + variant.Symptoms);
+        holder.Reco.setText("Rekomendadong Barayti: " + variant.Reco);
+        holder.Solution.setText("Kemikal na Solusyon: " + variant.Solution);
 
         // Load image from Firebase Storage using Glide
         if (variant.imagePath != null && !variant.imagePath.isEmpty()) {

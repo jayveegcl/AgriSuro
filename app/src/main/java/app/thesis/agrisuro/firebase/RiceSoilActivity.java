@@ -1,0 +1,64 @@
+package app.thesis.agrisuro.firebase;
+
+import android.os.Build;
+import android.os.Bundle;
+import android.util.Pair;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import app.thesis.agrisuro.R;
+
+public class RiceSoilActivity extends AppCompatActivity {
+    private RecyclerView recyclerView;
+    private RiceSoilAdapter adapter;
+    private List<Pair<String, RiceSoil>> riceSoilList = new ArrayList<>();
+    private FirebaseFirestore db;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        FirebaseApp.initializeApp(this);
+        setContentView(R.layout.activity_rice_variants);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            window.setStatusBarColor(ContextCompat.getColor(this, R.color.colorPrimary));
+        }
+
+        db = FirebaseFirestore.getInstance();
+        recyclerView = findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        db.collection("rice_soil")
+                .get()
+                .addOnSuccessListener(queryDocumentSnapshots -> {
+                    for (QueryDocumentSnapshot doc : queryDocumentSnapshots) {
+                        RiceSoil variant = doc.toObject(RiceSoil.class);
+                        riceSoilList.add(new Pair<>(doc.getId(), variant));
+                    }
+
+                    adapter = new RiceSoilAdapter(riceSoilList);
+                    recyclerView.setAdapter(adapter);
+                })
+                .addOnFailureListener(e -> {
+                    Toast.makeText(RiceSoilActivity.this, "Error: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                    e.printStackTrace(); // Also logs in Logcat
+                });
+    }
+}
+

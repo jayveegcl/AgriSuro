@@ -21,10 +21,12 @@ import app.thesis.agrisuro.firebase.RiceInsectsActivity;
 import app.thesis.agrisuro.firebase.RiceWeedsActivity;
 import app.thesis.agrisuro.firebase.RicePesticidesActivity;
 import app.thesis.agrisuro.firebase.RiceFertilizersActivity;
+import app.thesis.agrisuro.firebase.RiceSoilActivity;
+import app.thesis.agrisuro.firebase.RiceGrowthActivity;
 
 public class ResourceCenterFragment extends Fragment {
 
-    private MaterialCardView cardRiceVariants, cardRiceDiseases, cardRiceWeeds, cardRiceInsects, cardPesticides, cardFertilizers;
+    private MaterialCardView cardRiceVariants, cardRiceDiseases, cardRiceWeeds, cardRiceInsects, cardPesticides, cardFertilizers, cardSoil, cardGrowth;
     private FloatingActionButton fabHelp;
 
     @Nullable
@@ -41,6 +43,8 @@ public class ResourceCenterFragment extends Fragment {
         cardRiceInsects = view.findViewById(R.id.cardRiceInsects);
         cardPesticides = view.findViewById(R.id.cardPesticides);
         cardFertilizers = view.findViewById(R.id.cardFertilizers);
+        cardSoil = view.findViewById(R.id.cardSoil);
+        cardGrowth = view.findViewById(R.id.cardGrowth);
         fabHelp = view.findViewById(R.id.fabHelp);
 
         // Set click listeners for MaterialCardViews
@@ -66,6 +70,14 @@ public class ResourceCenterFragment extends Fragment {
 
         cardFertilizers.setOnClickListener(v -> {
             startActivity(new Intent(getActivity(), RiceFertilizersActivity.class));
+        });
+
+        cardSoil.setOnClickListener(v -> {
+            startActivity(new Intent(getActivity(), RiceSoilActivity.class));
+        });
+
+        cardGrowth.setOnClickListener(v -> {
+            startActivity(new Intent(getActivity(), RiceGrowthActivity.class));
         });
 
         // Setup FAB for help

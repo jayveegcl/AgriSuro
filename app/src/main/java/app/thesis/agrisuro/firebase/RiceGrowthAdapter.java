@@ -18,51 +18,41 @@ import java.util.List;
 import app.thesis.agrisuro.R;
 
 
-public class RiceVariantsAdapter extends RecyclerView.Adapter<RiceVariantsAdapter.ViewHolder> {
-    private List<Pair<String, RiceVariants>> riceList;
+public class RiceGrowthAdapter extends RecyclerView.Adapter<RiceGrowthAdapter.ViewHolder> {
+    private List<Pair<String, RiceGrowth>> riceGrowthList;
 
-    public RiceVariantsAdapter(List<Pair<String, RiceVariants>> riceList) {
-        this.riceList = riceList;
+    public RiceGrowthAdapter(List<Pair<String, RiceGrowth>> riceGrowthList) {
+        this.riceGrowthList = riceGrowthList;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView name, Average_Yield, Environment, Height, Maturity, Maximum_Yield, Season;
+        TextView name, A, Tagalog;
         ImageView riceImage;
 
         public ViewHolder(View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.rice1);
-
-            Environment = itemView.findViewById(R.id.rice2);
-            Season = itemView.findViewById(R.id.rice3);
-            Maturity = itemView.findViewById(R.id.rice4);
-            Height = itemView.findViewById(R.id.rice5);
-            Average_Yield = itemView.findViewById(R.id.rice6);
-            Maximum_Yield = itemView.findViewById(R.id.rice7);
-
+            Tagalog = itemView.findViewById(R.id.rice2);
+            A = itemView.findViewById(R.id.rice3);
             riceImage = itemView.findViewById(R.id.riceImage);
         }
     }
 
     @NonNull
     @Override
-    public RiceVariantsAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_detail_card, parent, false);
+    public RiceGrowthAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_detail_card2, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        Pair<String, RiceVariants> pair = riceList.get(position);
-        RiceVariants variant = pair.second;
+        Pair<String, RiceGrowth> pair = riceGrowthList.get(position);
+        RiceGrowth variant = pair.second;
 
         holder.name.setText(pair.first);
-        holder.Average_Yield.setText("\uD83C\uDF3E Karaniwang Ani: " + variant.Average_Yield);
-        holder.Environment.setText("\uD83C\uDF0D Lokasyon: " + variant.Environment);
-        holder.Height.setText("\uD83D\uDCCF Tangkad: " + variant.Height);
-        holder.Maturity.setText("⏳ Panahon ng Pagkahinog: " + variant.Maturity);
-        holder.Maximum_Yield.setText("\uD83D\uDCC8 Pinakamataas na Ani: " + variant.Maximum_Yield);
-        holder.Season.setText("☀\uFE0F Panahon: " + variant.Season);
+        holder.Tagalog.setText("\uD83C\uDFF7\uFE0F Tagalog: " + variant.Tagalog);
+        holder.A.setText("" + variant.A);
 
         // Load image from Firebase Storage using Glide
         if (variant.imagePath != null && !variant.imagePath.isEmpty()) {
@@ -86,6 +76,6 @@ public class RiceVariantsAdapter extends RecyclerView.Adapter<RiceVariantsAdapte
 
     @Override
     public int getItemCount() {
-        return riceList.size();
+        return riceGrowthList.size();
     }
 }

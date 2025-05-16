@@ -53,7 +53,7 @@ public class RiceWeedsAdapter extends RecyclerView.Adapter<RiceWeedsAdapter.View
         RiceWeeds variant = pair.second;
 
         holder.name.setText(pair.first);
-        holder.Local_name.setText("\uD83C\uDFF7\uFE0F Local Name: " + variant.Local_name);
+        holder.Local_name.setText("\uD83C\uDFF7\uFE0F Karaniwang Pangalan: " + variant.Local_name);
         holder.Cultivated.setText("\uD83C\uDF3C Cultivated: " + variant.Cultivated);
         holder.Development.setText("\uD83C\uDF3E Development: " + variant.Development);
         holder.Propagation.setText("\uD83D\uDD01 Propagation: " + variant.Propagation);
