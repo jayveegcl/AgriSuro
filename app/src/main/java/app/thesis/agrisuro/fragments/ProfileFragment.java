@@ -129,11 +129,12 @@ public class ProfileFragment extends Fragment {
         builder.setTitle("References & Sources");
         builder.setMessage(
                 "Agricultural data and information in this application were sourced from:\n\n" +
-                        "• Department of Agriculture - Philippines\n" +
+                        "• Department of Agriculture - Philippines (DA)\n" +
                         "• Philippine Rice Research Institute (PhilRice)\n" +
                         "• International Rice Research Institute (IRRI)\n" +
                         "• Food and Agriculture Organization (FAO)\n" +
                         "• Bureau of Agricultural Statistics\n" +
+                        "• Bureau of Plant Industry\n" +
                         "\n" +
                         "Weather data and forecast:\n" +
                         "• OpenWeatherMap\n" +

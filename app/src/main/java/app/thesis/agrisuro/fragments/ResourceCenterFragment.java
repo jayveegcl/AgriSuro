@@ -95,7 +95,7 @@ public class ResourceCenterFragment extends Fragment {
                         "kabilang ang mga uri ng palay, karaniwang sakit, pamamahala ng mga damo, " +
                         "inirerekumendang pestisidyo, pataba, atbp. " +
                         "Pindutin and anumang card para matuto pa tungkol sa paksang iyon.")
-                .setPositiveButton("Got it", (dialog, which) -> dialog.dismiss())
+                .setPositiveButton("OK", (dialog, which) -> dialog.dismiss())
                 .show();
     }
 }
