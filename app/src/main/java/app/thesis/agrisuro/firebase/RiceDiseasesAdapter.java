@@ -25,7 +25,7 @@ public class RiceDiseasesAdapter extends RecyclerView.Adapter<RiceDiseasesAdapte
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView name, Disease_Management, Factors, Local_name, Symptoms, Reco, Solution;
+        TextView name, Disease_Management, Factors, Local_name, Symptoms, Reco;
         ImageView riceImage;
 
         public ViewHolder(View itemView) {
@@ -34,9 +34,8 @@ public class RiceDiseasesAdapter extends RecyclerView.Adapter<RiceDiseasesAdapte
             Local_name = itemView.findViewById(R.id.rice2);
             Symptoms = itemView.findViewById(R.id.rice3);
             Factors = itemView.findViewById(R.id.rice4);
-            Solution = itemView.findViewById(R.id.rice5);
-            Reco = itemView.findViewById(R.id.rice6);
-            Disease_Management = itemView.findViewById(R.id.rice7);
+            Reco = itemView.findViewById(R.id.rice5);
+            Disease_Management = itemView.findViewById(R.id.rice6);
             riceImage = itemView.findViewById(R.id.riceImage);
         }
     }
@@ -58,8 +57,7 @@ public class RiceDiseasesAdapter extends RecyclerView.Adapter<RiceDiseasesAdapte
         holder.Disease_Management.setText("\uD83D\uDC8A Pamamahala ng Sakit: " + variant.Disease_Management);
         holder.Factors.setText("⚠\uFE0F Sanhi: " + variant.Factors);
         holder.Symptoms.setText("\uD83E\uDD12 Sintomas: " + variant.Symptoms);
-        holder.Reco.setText("Rekomendadong Barayti: " + variant.Reco);
-        holder.Solution.setText("Kemikal na Solusyon: " + variant.Solution);
+        holder.Reco.setText("\uD83C\uDF3E Rekomendadong Barayti: " + variant.Reco);
 
         // Load image from Firebase Storage using Glide
         if (variant.imagePath != null && !variant.imagePath.isEmpty()) {
