@@ -93,8 +93,8 @@ public class ResourceCenterFragment extends Fragment {
                 .setTitle("Help Center")
                 .setMessage("Ang Resource Center na ito ay nagbibigay ng impormasyon tungkol sa pagtatanim ng palay, " +
                         "kabilang ang mga uri ng palay, karaniwang sakit, pamamahala ng mga damo, " +
-                        "inirerekumendang pestisidyo, at pataba. " +
-                        "Pindutin and anumang card para matuto pa tungkol sa pasang iyon")
+                        "inirerekumendang pestisidyo, pataba, atbp. " +
+                        "Pindutin and anumang card para matuto pa tungkol sa paksang iyon.")
                 .setPositiveButton("Got it", (dialog, which) -> dialog.dismiss())
                 .show();
     }
